@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="en">
+<html lang="it" data-i18n-page="privacy">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <title>Appunto privacy policy: what stays on your computer</title>
-    <meta name="description" content="What Appunto records, what stays on your computer, what is sent and where, and how to remove it." />
+    <title>Informativa privacy di Appunto: cosa resta sul tuo computer</title>
+    <meta name="description" content="Cosa registra Appunto, cosa resta sul tuo computer, cosa viene inviato e dove, e come cancellarlo." />
     <link rel="canonical" href="https://bydamiano.github.io/appunto-site/privacy.html" />
     <meta name="robots" content="index, follow" />
     <meta name="theme-color" content="#0d0d17" />
@@ -14,47 +14,142 @@
     <link rel="manifest" href="site.webmanifest" />
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Appunto" />
-    <meta property="og:title" content="Appunto privacy policy: what stays on your computer" />
-    <meta property="og:description" content="What Appunto records, what stays on your computer, what is sent and where, and how to remove it." />
+    <meta property="og:title" content="Informativa privacy di Appunto: cosa resta sul tuo computer" />
+    <meta property="og:description" content="Cosa registra Appunto, cosa resta sul tuo computer, cosa viene inviato e dove, e come cancellarlo." />
     <meta property="og:url" content="https://bydamiano.github.io/appunto-site/privacy.html" />
     <meta property="og:image" content="https://bydamiano.github.io/appunto-site/og.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale" content="it_IT" />
+    <meta property="og:locale:alternate" content="en_US" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Appunto privacy policy: what stays on your computer" />
-    <meta name="twitter:description" content="What Appunto records, what stays on your computer, what is sent and where, and how to remove it." />
+    <meta name="twitter:title" content="Informativa privacy di Appunto: cosa resta sul tuo computer" />
+    <meta name="twitter:description" content="Cosa registra Appunto, cosa resta sul tuo computer, cosa viene inviato e dove, e come cancellarlo." />
     <meta name="twitter:image" content="https://bydamiano.github.io/appunto-site/og.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Figtree:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" />
     <link rel="stylesheet" href="style.css" />
+    <script src="site.js" defer></script>
   </head>
   <body>
     <header class="top">
       <div class="wrap top-in">
         <a class="brand" href="./"><img src="logo.svg" alt="" width="38" height="38" /><span>App<span class="unto">unto</span></span></a>
-        <nav class="links" aria-label="Site">
-          <a href="./">Home</a>
-          <a href="download.html">Download</a>
-          <a href="guide.html">Guide</a>
-          <a href="privacy.html" aria-current="page">Privacy</a>
-          <a href="terms.html">Terms</a>
+        <nav class="links" aria-label="Sito" data-i18n-label="nav.label">
+          <a href="./#come-funziona" data-i18n="nav.how">Come funziona</a>
+          <a href="./#cose-da-fare" data-i18n="nav.todos">Cose da fare</a>
+          <a href="./#funzioni" data-i18n="nav.features">Funzioni</a>
+          <a href="guide.html" data-i18n="nav.guide">Guida</a>
+          <a href="privacy.html" aria-current="page" data-i18n="nav.privacy">Privacy</a>
         </nav>
         <div class="top-actions">
-          <a class="btn btn-primary btn-sm" href="download.html">Download</a>
+          <div class="lang" role="group" aria-label="Lingua" data-i18n-label="lang.label">
+            <button type="button" data-lang="it" aria-pressed="true">IT</button>
+            <button type="button" data-lang="en" aria-pressed="false">EN</button>
+          </div>
+          <a class="btn btn-primary btn-sm" href="download.html" data-i18n="cta.download">Scarica</a>
         </div>
       </div>
       <div class="progress" aria-hidden="true"></div>
     </header>
 
     <main class="wrap page prose">
+      <div lang="it" data-lang-only="it">
+        <p class="eyebrow">Privacy</p>
+        <h1>Informativa sulla privacy</h1>
+        <p class="meta">Ultimo aggiornamento: 31 ottobre 2026</p>
+        <p class="lead">Appunto è un'app desktop (macOS, Windows, Linux) che registra le tue riunioni e le trasforma in appunti in cui puoi cercare. Funziona sul tuo computer. Non esiste un server di Appunto: lo sviluppatore non riceve mai le tue registrazioni, trascrizioni, token degli account o chiavi API.</p>
+
+        <section class="card">
+          <h2>Chi siamo</h2>
+          <p>Appunto è sviluppato da Damiano Maka, sviluppatore indipendente. Contatto: <a href="mailto:bydamiano07@gmail.com">bydamiano07@gmail.com</a>.</p>
+        </section>
+
+        <section class="card">
+          <h2>Cosa registra l'app</h2>
+          <ul>
+            <li><strong>L'audio, solo mentre registri.</strong> Appunto cattura l'audio del tuo computer e il tuo microfono dal momento in cui premi registra a quando ti fermi. Nessun bot entra nella call.</li>
+            <li><strong>Trascritto sul tuo computer.</strong> L'audio viene trascritto in locale da un motore vocale integrato (whisper.cpp). L'audio grezzo non lascia mai il tuo computer; i brevi pezzi di audio vengono cancellati una volta trascritti (quelli non riusciti restano nella cache dell'app per poterli riprovare).</li>
+            <li><strong>Voci.</strong> La distinzione tra le voci («Voce 1», «Voce 2») avviene sul tuo computer. Salvare un'<em>impronta vocale</em> per riconoscere una persona nelle riunioni successive è spento all'inizio; quando lo attivi, le impronte vocali sono dati biometrici conservati solo nel database locale e si possono cancellare una per una o tutte insieme nelle Impostazioni. Le impronte vocali non vengono mai inviate da nessuna parte.</li>
+            <li><strong>Scheda di Google Meet (macOS, facoltativo).</strong> Mentre registri, l'app può leggere la scheda di Google Meet aperta nel browser per conoscere i nomi dei partecipanti e chi sta parlando. Il testo dei sottotitoli non viene mai letto né salvato, e niente viene inviato.</li>
+          </ul>
+        </section>
+
+        <section class="card">
+          <h2>Account Google (facoltativo)</h2>
+          <p>Se colleghi Google, il tuo account Google ti chiede di concedere questi permessi di sola lettura:</p>
+          <ul>
+            <li><code>openid</code> ed <code>email</code>: per mostrare quale account è collegato.</li>
+            <li><code>https://www.googleapis.com/auth/calendar.events.readonly</code>: per trovare l'evento del Calendario che corrisponde a una registrazione e usarne il titolo e i nomi e gli indirizzi email delle persone invitate.</li>
+            <li><code>https://www.googleapis.com/auth/meetings.space.readonly</code>: per le call di Google Meet, per leggere i nomi visualizzati delle persone che sono entrate davvero.</li>
+          </ul>
+          <p>Appunto chiede a Google solo gli eventi intorno all'orario di una registrazione e la call di Meet con quel codice riunione. I risultati vengono salvati nel database locale sul tuo computer. Appunto non modifica mai il tuo calendario né le tue riunioni.</p>
+        </section>
+
+        <section class="card">
+          <h2>Norme sui dati utente dei servizi API di Google</h2>
+          <p>L'uso e il trasferimento ad altre app, da parte di Appunto, delle informazioni ricevute dalle API di Google rispetteranno le <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, inclusi i requisiti di uso limitato (Limited Use).</p>
+          <p>I dati di Google, e di ogni altro servizio, non vengono usati per la pubblicità, non vengono venduti, non vengono condivisi con lo sviluppatore e non vengono usati dallo sviluppatore per addestrare modelli di AI o di machine learning.</p>
+        </section>
+
+        <section class="card">
+          <h2>Altri strumenti collegati (facoltativo)</h2>
+          <p>Puoi collegare GitHub (permesso <code>repo</code>), GitLab, Jira e Confluence (Atlassian) e Azure DevOps con l'accesso dal browser. Appunto invia loro solo i codici sentiti in una riunione, come <code>PROJ-142</code> o <code>owner/repo#12</code>, per mostrare il titolo e lo stato di quelle issue e pull request. Il testo delle trascrizioni non viene mai inviato.</p>
+        </section>
+
+        <section class="card">
+          <h2>Fare domande sulle tue riunioni</h2>
+          <p>Quando è selezionato il modello linguistico locale integrato, le domande ricevono risposta sul tuo computer e niente esce.</p>
+          <p>Quando scegli un fornitore AI online (Google Gemini, OpenAI, il tuo piano ChatGPT, Anthropic o OpenRouter), Appunto invia a quel fornitore la tua domanda e i pochi pezzi di trascrizione utili, direttamente dal tuo computer, con la tua chiave o il tuo account. Si applicano i termini e l'informativa privacy di quel fornitore. Google può usare le richieste inviate con una chiave Gemini gratuita per migliorare i suoi prodotti.</p>
+        </section>
+
+        <section class="card">
+          <h2>Collegare un assistente AI (facoltativo)</h2>
+          <p>«Collega un'AI» è spento finché non lo accendi. Permette a un assistente sul tuo computer (come Claude o Codex) di leggere le tue riunioni e le tue cose da fare attraverso Appunto, entro i limiti che scegli tu: riunioni, trascrizioni, cose da fare, nomi dei partecipanti, e se può modificare le cose da fare. Appunto non apre nessuna porta di rete per questo. Quello che l'assistente legge viene inviato dall'assistente al suo fornitore, fuori dal controllo di Appunto. Impronte vocali e audio non vengono mai condivisi.</p>
+        </section>
+
+        <section class="card">
+          <h2>Cosa viene salvato, e dove</h2>
+          <ul>
+            <li><strong>Solo sul tuo computer.</strong> Riunioni, trascrizioni, cose da fare, partecipanti e impostazioni sono conservati nel database locale e nei file di impostazioni dell'app.</li>
+            <li>Le chiavi API e i token di accesso sono conservati in un file nella cartella dei dati dell'app che solo il tuo account utente può leggere. <strong>Non sono cifrati</strong>, quindi un programma eseguito con il tuo utente potrebbe leggerli.</li>
+            <li>Il modello vocale, i modelli per le voci e il modello linguistico locale facoltativo vengono scaricati una volta, quando servono, da Hugging Face e GitHub. Questi download non inviano dati personali.</li>
+            <li>L'app non ha analitiche, tracciamento né telemetria. Lo sviluppatore non ha server e non riceve dati dall'app.</li>
+          </ul>
+        </section>
+
+        <section class="card">
+          <h2>Le tue scelte</h2>
+          <ul>
+            <li>Cancella qualsiasi riunione nell'app: la sua trascrizione e i suoi appunti vengono rimossi dal database locale.</li>
+            <li>Cancella una o tutte le voci salvate nelle Impostazioni.</li>
+            <li>Scollega qualsiasi servizio collegato nelle Impostazioni: i suoi token vengono cancellati dal tuo computer. Puoi anche revocare l'accesso dal servizio stesso, per esempio <a href="https://myaccount.google.com/permissions">Google</a> o <a href="https://github.com/settings/applications">GitHub</a>.</li>
+            <li>Disinstallare l'app e cancellare la sua cartella dei dati (<code>com.appunto.app</code>) rimuove tutto ciò che ha salvato.</li>
+          </ul>
+        </section>
+
+        <section class="card">
+          <h2>Registrare altre persone</h2>
+          <p>Registrare una conversazione può richiedere il consenso degli altri partecipanti dove vivi. Avvisa chi partecipa quando registri.</p>
+        </section>
+
+        <section class="card">
+          <h2>Minori</h2>
+          <p>Appunto non è pensato per i minori di 16 anni.</p>
+        </section>
+
+        <section class="card">
+          <h2>Modifiche e contatti</h2>
+          <p>Se questa informativa cambia, la data in alto viene aggiornata. Domande o richieste: <a href="mailto:bydamiano07@gmail.com">bydamiano07@gmail.com</a>.</p>
+        </section>
+      </div>
+
+      <div lang="en" data-lang-only="en" hidden>
+        <p class="eyebrow">Privacy</p>
         <h1>Privacy Policy</h1>
         <p class="meta">Last updated October 31, 2026</p>
-        <p class="lead">
-          Appunto is a desktop app (macOS, Windows, Linux) that records your meetings and turns them into searchable notes.
-          It runs on your computer. There is no Appunto server: the developer never receives your recordings, transcripts, account tokens or API keys.
-        </p>
+        <p class="lead">Appunto is a desktop app (macOS, Windows, Linux) that records your meetings and turns them into searchable notes. It runs on your computer. There is no Appunto server: the developer never receives your recordings, transcripts, account tokens or API keys.</p>
 
         <section class="card">
           <h2>Who we are</h2>
@@ -96,18 +191,12 @@
         <section class="card">
           <h2>Asking questions about your meetings</h2>
           <p>When the built-in local language model is selected, questions are answered on your computer and nothing leaves it.</p>
-          <p>
-            When you choose an online AI provider (Google Gemini, OpenAI, your ChatGPT plan, Anthropic or OpenRouter), Appunto sends that provider your question and the few transcript snippets relevant to it,
-            directly from your computer, with your own key or account. That provider's terms and privacy policy apply. Google may use prompts sent with a free Gemini key to improve its products.
-          </p>
+          <p>When you choose an online AI provider (Google Gemini, OpenAI, your ChatGPT plan, Anthropic or OpenRouter), Appunto sends that provider your question and the few transcript snippets relevant to it, directly from your computer, with your own key or account. That provider's terms and privacy policy apply. Google may use prompts sent with a free Gemini key to improve its products.</p>
         </section>
 
         <section class="card">
           <h2>Connecting an AI assistant (optional)</h2>
-          <p>
-            “Connect an AI” is off until you turn it on. It lets an assistant on your computer (such as Claude or Codex) read your meetings and to-dos through Appunto, within the limits you choose: meetings, transcripts, to-dos, participant names, and whether it may change to-dos.
-            Appunto opens no network port for it. What the assistant reads is sent by the assistant to its own provider, outside Appunto's control. Voice prints and audio are never shared.
-          </p>
+          <p>“Connect an AI” is off until you turn it on. It lets an assistant on your computer (such as Claude or Codex) read your meetings and to-dos through Appunto, within the limits you choose: meetings, transcripts, to-dos, participant names, and whether it may change to-dos. Appunto opens no network port for it. What the assistant reads is sent by the assistant to its own provider, outside Appunto's control. Voice prints and audio are never shared.</p>
         </section>
 
         <section class="card">
@@ -144,16 +233,18 @@
           <h2>Changes and contact</h2>
           <p>If this policy changes, the date above is updated. Questions or requests: <a href="mailto:bydamiano07@gmail.com">bydamiano07@gmail.com</a>.</p>
         </section>
-      </main>
+      </div>
+    </main>
 
     <footer>
       <div class="wrap">
         <img src="logo.svg" alt="" width="28" height="28" />
         <span>© 2026 Appunto</span>
-        <a href="privacy.html">Privacy</a>
-        <a href="terms.html">Terms</a>
-        <a href="guide.html">Guide</a>
-        <a href="mailto:bydamiano07@gmail.com">Contact</a>
+        <a href="download.html" data-i18n="nav.download">Scarica</a>
+        <a href="guide.html" data-i18n="nav.guide">Guida</a>
+        <a href="privacy.html" data-i18n="nav.privacy">Privacy</a>
+        <a href="terms.html" data-i18n="nav.terms">Termini</a>
+        <a href="mailto:bydamiano07@gmail.com" data-i18n="foot.contact">Contatti</a>
       </div>
     </footer>
   </body>

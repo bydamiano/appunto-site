@@ -15,8 +15,14 @@
       'meta.dl.title': 'Scarica Appunto per Mac, Windows e Linux',
       'meta.dl.desc': 'Scarica Appunto per macOS (Apple e Intel), Windows 10/11 e Linux: un file, si installa come ogni altra app.',
       'nav.home': 'Home', 'nav.download': 'Scarica', 'nav.guide': 'Guida', 'nav.privacy': 'Privacy', 'nav.terms': 'Termini',
-      'nav.how': 'Come funziona', 'nav.todos': 'Cose da fare', 'nav.features': 'Funzioni',
+      'nav.how': 'Come funziona', 'nav.todos': 'Cose da fare', 'nav.features': 'Funzioni', 'nav.label': 'Sito',
       'cta.download': 'Scarica', 'lang.label': 'Lingua',
+      'meta.guide.title': 'Guida di Appunto: installazione, primo avvio e assistenti AI',
+      'meta.guide.desc': 'Cosa fa Appunto, come installarlo, il primo avvio, come collegare un assistente AI e come compilarlo dal codice.',
+      'meta.privacy.title': 'Informativa privacy di Appunto: cosa resta sul tuo computer',
+      'meta.privacy.desc': 'Cosa registra Appunto, cosa resta sul tuo computer, cosa viene inviato e dove, e come cancellarlo.',
+      'meta.terms.title': 'Termini di servizio di Appunto',
+      'meta.terms.desc': 'Le condizioni per usare Appunto.',
       'hero.pill': 'Nessun bot è stato invitato a questa riunione',
       'hero.l1': 'Ogni riunione,', 'hero.l2': 'ricordata.',
       'hero.sub': 'Appunto registra qualsiasi call dal tuo computer, la trascrive sul tuo computer e trasforma quello che si dice in cose da fare, decisioni e risposte. Un punto di salvataggio per le tue riunioni.',
@@ -89,8 +95,14 @@
       'meta.dl.title': 'Download Appunto for Mac, Windows and Linux',
       'meta.dl.desc': 'Download Appunto for macOS (Apple and Intel), Windows 10/11 and Linux: one file, installed like any other app.',
       'nav.home': 'Home', 'nav.download': 'Download', 'nav.guide': 'Guide', 'nav.privacy': 'Privacy', 'nav.terms': 'Terms',
-      'nav.how': 'How it works', 'nav.todos': 'To-dos', 'nav.features': 'Features',
+      'nav.how': 'How it works', 'nav.todos': 'To-dos', 'nav.features': 'Features', 'nav.label': 'Site',
       'cta.download': 'Download', 'lang.label': 'Language',
+      'meta.guide.title': 'Appunto guide: install, first start and AI assistants',
+      'meta.guide.desc': 'What Appunto does, how to install it, first start, connecting an AI assistant and building from source.',
+      'meta.privacy.title': 'Appunto privacy policy: what stays on your computer',
+      'meta.privacy.desc': 'What Appunto records, what stays on your computer, what is sent and where, and how to remove it.',
+      'meta.terms.title': 'Appunto terms of service',
+      'meta.terms.desc': 'The terms for using Appunto.',
       'hero.pill': 'No bots were invited to this meeting',
       'hero.l1': 'Every meeting,', 'hero.l2': 'remembered.',
       'hero.sub': 'Appunto records any call straight from your computer, transcribes it on your machine, and turns what was said into to-dos, decisions and answers. Think of it as a save point for your meetings.',
@@ -184,6 +196,10 @@
     });
     document.querySelectorAll('[data-i18n-label]').forEach((el) => {
       el.setAttribute('aria-label', t(el.getAttribute('data-i18n-label')));
+    });
+    // Long pages (guide, privacy, terms) carry one full copy per language.
+    document.querySelectorAll('[data-lang-only]').forEach((el) => {
+      el.hidden = el.getAttribute('data-lang-only') !== lang;
     });
     const page = document.documentElement.getAttribute('data-i18n-page');
     if (page) {

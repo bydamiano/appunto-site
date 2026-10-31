@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="en">
+<html lang="it" data-i18n-page="guide">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <title>Appunto guide: install, first start and AI assistants</title>
-    <meta name="description" content="What Appunto does, how to install it, first start, connecting an AI assistant and building from source." />
+    <title>Guida di Appunto: installazione, primo avvio e assistenti AI</title>
+    <meta name="description" content="Cosa fa Appunto, come installarlo, il primo avvio, come collegare un assistente AI e come compilarlo dal codice." />
     <link rel="canonical" href="https://bydamiano.github.io/appunto-site/guide.html" />
     <meta name="robots" content="index, follow" />
     <meta name="theme-color" content="#0d0d17" />
@@ -14,47 +14,191 @@
     <link rel="manifest" href="site.webmanifest" />
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Appunto" />
-    <meta property="og:title" content="Appunto guide: install, first start and AI assistants" />
-    <meta property="og:description" content="What Appunto does, how to install it, first start, connecting an AI assistant and building from source." />
+    <meta property="og:title" content="Guida di Appunto: installazione, primo avvio e assistenti AI" />
+    <meta property="og:description" content="Cosa fa Appunto, come installarlo, il primo avvio, come collegare un assistente AI e come compilarlo dal codice." />
     <meta property="og:url" content="https://bydamiano.github.io/appunto-site/guide.html" />
     <meta property="og:image" content="https://bydamiano.github.io/appunto-site/og.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale" content="it_IT" />
+    <meta property="og:locale:alternate" content="en_US" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Appunto guide: install, first start and AI assistants" />
-    <meta name="twitter:description" content="What Appunto does, how to install it, first start, connecting an AI assistant and building from source." />
+    <meta name="twitter:title" content="Guida di Appunto: installazione, primo avvio e assistenti AI" />
+    <meta name="twitter:description" content="Cosa fa Appunto, come installarlo, il primo avvio, come collegare un assistente AI e come compilarlo dal codice." />
     <meta name="twitter:image" content="https://bydamiano.github.io/appunto-site/og.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Figtree:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" />
     <link rel="stylesheet" href="style.css" />
+    <script src="site.js" defer></script>
   </head>
   <body>
     <header class="top">
       <div class="wrap top-in">
         <a class="brand" href="./"><img src="logo.svg" alt="" width="38" height="38" /><span>App<span class="unto">unto</span></span></a>
-        <nav class="links" aria-label="Site">
-          <a href="./">Home</a>
-          <a href="download.html">Download</a>
-          <a href="guide.html" aria-current="page">Guide</a>
-          <a href="privacy.html">Privacy</a>
-          <a href="terms.html">Terms</a>
+        <nav class="links" aria-label="Sito" data-i18n-label="nav.label">
+          <a href="./#come-funziona" data-i18n="nav.how">Come funziona</a>
+          <a href="./#cose-da-fare" data-i18n="nav.todos">Cose da fare</a>
+          <a href="./#funzioni" data-i18n="nav.features">Funzioni</a>
+          <a href="guide.html" aria-current="page" data-i18n="nav.guide">Guida</a>
+          <a href="privacy.html" data-i18n="nav.privacy">Privacy</a>
         </nav>
         <div class="top-actions">
-          <a class="btn btn-primary btn-sm" href="download.html">Download</a>
+          <div class="lang" role="group" aria-label="Lingua" data-i18n-label="lang.label">
+            <button type="button" data-lang="it" aria-pressed="true">IT</button>
+            <button type="button" data-lang="en" aria-pressed="false">EN</button>
+          </div>
+          <a class="btn btn-primary btn-sm" href="download.html" data-i18n="cta.download">Scarica</a>
         </div>
       </div>
       <div class="progress" aria-hidden="true"></div>
     </header>
 
     <main class="wrap page prose">
-        <h1>Guide</h1>
-        <p class="lead">
-          A private meeting recorder and second brain for macOS, Windows and Linux. No bots join your calls. Everything is transcribed on your computer.
-        </p>
+      <div lang="it" data-lang-only="it">
+        <p class="eyebrow">Guida</p>
+        <h1>Tutto su Appunto</h1>
+        <p class="lead">Un registratore di riunioni privato e un secondo cervello per macOS, Windows e Linux. Nessun bot entra nelle tue call. Tutto viene trascritto sul tuo computer.</p>
 
-        <section class="card">
+        <section class="card" id="cosa-fa">
+          <h2>Cosa fa</h2>
+          <p>Appunto registra l'audio di qualsiasi call (Google Meet, Zoom, Teams, …) direttamente dal tuo computer, lo trascrive in locale con <a href="https://github.com/ggml-org/whisper.cpp">whisper.cpp</a> e lo trasforma in una memoria in cui puoi cercare:</p>
+          <ul>
+            <li><strong>Cronologia</strong> di ogni riunione con le decisioni, le azioni, i ticket Jira, le issue e le pull request citate, nell'ordine in cui sono successe.</li>
+            <li><strong>Da fare</strong>: ogni azione sentita in riunione diventa una cosa da fare, una volta sola, con il link al momento in cui è stata detta. Spuntale, aggiungi le tue, scegli chi e quando, e guarda l'avanzamento della settimana.</li>
+            <li><strong>Chiedi alle tue riunioni</strong>: «Cosa abbiamo deciso su PROJ-142?». Le risposte citano il momento esatto, con il link alla trascrizione.</li>
+            <li><strong>Collega un'AI</strong> (facoltativo, spento all'inizio): Claude Desktop, Claude Code, Codex o qualsiasi client MCP possono cercare nelle riunioni, leggere le trascrizioni e gestire le cose da fare. Scegli tu cosa vede; vedi <a href="#collega-un-assistente-ai">Collegare un assistente AI</a>.</li>
+            <li><strong>Strumenti collegati</strong> (facoltativo): Jira / Confluence (Atlassian), GitHub, GitLab e Azure DevOps tramite i loro server MCP ufficiali, con l'accesso dal browser. Nessun token da copiare.</li>
+            <li><strong>Chi c'era in call</strong> (facoltativo): accedi con Google una volta e ogni registrazione prende il titolo dell'evento del Calendario e i nomi delle persone invitate e, per le call di Google Meet, di chi è entrato davvero, senza bot in riunione. I nomi si possono anche aggiungere a mano.</li>
+            <li><strong>Voci con il nome giusto</strong> (macOS, facoltativo): mentre registri, l'app legge la scheda di Google Meet aperta in Chrome, Edge, Brave o Safari (Arc: sperimentale), cioè l'elenco dei partecipanti e, se i sottotitoli (CC) di Meet sono attivi, chi sta parlando, e mette il nome giusto su «Voce 1», «Voce 2», … Senza estensioni, senza bot, senza accesso a Google; serve un'impostazione del browser da attivare una volta (vedi <a href="#primo-avvio">Primo avvio</a>).</li>
+            <li><strong>L'AI che preferisci</strong>: <strong>Google Gemini</strong> con una chiave API gratuita (l'app sceglie il modello per te e cambia da sola quando uno raggiunge il limite giornaliero), il tuo <strong>piano ChatGPT Plus/Pro</strong> (accedi, nessuna chiave API), OpenAI, Anthropic o OpenRouter.</li>
+            <li>Interfaccia in italiano e inglese; trascrizione in 12 lingue.</li>
+          </ul>
+        </section>
+
+        <section class="card" id="privacy-it">
+          <h2>Privacy</h2>
+          <ul>
+            <li>L'audio non lascia mai il tuo computer. Le registrazioni sono trascritte in locale e salvate in un database SQLite locale.</li>
+            <li>Quando fai una domanda, solo i pochi pezzi di trascrizione utili vengono inviati al fornitore AI che hai scelto.</li>
+            <li>Gli strumenti collegati ricevono solo codici (per esempio <code>PROJ-142</code>, <code>owner/repo#12</code>), mai il testo delle trascrizioni. Google riceve solo l'intervallo di tempo di una registrazione e il codice della riunione; i nomi dei partecipanti restano nel database locale.</li>
+            <li>La lettura della scheda di Google Meet (macOS) avviene sul tuo computer e solo mentre registri: l'app legge i nomi dei partecipanti e <em>chi</em> parlava <em>quando</em>; il testo dei sottotitoli non viene mai letto né salvato, e niente viene inviato. Con il riconoscimento delle voci attivo, una voce a cui hai dato un nome viene salvata come impronta vocale, così le riunioni successive riconoscono la persona; le voci si possono cancellare in qualsiasi momento nelle Impostazioni.</li>
+            <li>L'impostazione del browser <strong>Consenti JavaScript dagli Apple Events</strong> permette a ogni app autorizzata in <em>Privacy e sicurezza → Automazione</em> di eseguire script nelle schede del browser, non solo ad Appunto. Autorizza solo app di cui ti fidi, e disattiva l'impostazione se smetti di usare la funzione.</li>
+            <li>Le chiavi API e i token di accesso sono salvati sul tuo computer in <code>secrets.json</code>, nella cartella dei dati dell'app, leggibile solo dal tuo account utente. Non sono cifrati, quindi chiunque (o qualsiasi programma) usi il tuo account può leggerli.</li>
+            <li><strong>Collega un'AI</strong> è spento finché non lo accendi. Appunto non apre nessuna porta di rete: è l'assistente sul tuo computer ad avviare Appunto e a leggere attraverso di lui. Quello che l'assistente legge esce dal tuo computer e va al suo fornitore (Anthropic, OpenAI, …), quindi condividi solo ciò che ti va di condividere. Impronte vocali e audio non vengono mai condivisi.</li>
+            <li>Registrare altre persone può richiedere il loro consenso dove vivi: avvisa chi partecipa quando registri.</li>
+          </ul>
+          <p><strong>Gemini gratuito:</strong> Google può usare le richieste e le risposte del piano gratuito per migliorare i suoi prodotti. Per le riunioni riservate attiva la fatturazione sulla tua chiave o scegli un altro fornitore.</p>
+          <p>L'informativa completa è nella pagina <a href="privacy.html">Privacy</a>.</p>
+        </section>
+
+        <section class="card" id="installa">
+          <h2>Installazione</h2>
+          <p>Niente terminale, niente configurazione: scarichi un file, lo installi come ogni altra app e lo apri. Il file per il tuo computer e i passi per installarlo sono nella pagina <a href="download.html">Scarica</a>.</p>
+        </section>
+
+        <section class="card" id="primo-avvio">
+          <h2>Primo avvio</h2>
+          <ul>
+            <li>L'app scarica una volta il modello vocale (circa 574 MB). Tienila aperta finché la barra di avanzamento non finisce. Il file viene verificato con un checksum e resta sul tuo computer.</li>
+            <li>Alle domande sulle riunioni risponde un modello integrato nell'app («Locale / privato»): premi <strong>Scarica</strong> sulla sua scheda (circa 2,7 GB, una volta sola) e niente esce dal tuo computer. Oppure scegli un fornitore cloud nelle Impostazioni.</li>
+            <li><strong>macOS</strong>: la prima registrazione chiede i permessi per <strong>Microfono</strong> e <strong>Registrazione schermo e audio di sistema</strong>. Concedili entrambi, poi chiudi e riapri l'app.</li>
+            <li>
+              <strong>macOS, nomi delle voci da Google Meet</strong> (facoltativo):
+              <ol>
+                <li>Nel browser che usi per Meet, attiva <strong>Consenti JavaScript dagli Apple Events</strong>: Chrome, Edge, Brave: <strong>Visualizza → Sviluppatore</strong>; Safari: menu <strong>Sviluppo</strong> (lo mostri con <strong>Safari → Impostazioni → Avanzate → Mostra funzionalità per sviluppatori web</strong>).</li>
+                <li>Alla prima registrazione con il browser aperto, macOS chiede se Appunto può controllarlo: premi <strong>Consenti</strong> (in seguito: <strong>Impostazioni di Sistema → Privacy e sicurezza → Automazione</strong>).</li>
+                <li>Nella call di Meet attiva i sottotitoli (<strong>CC</strong>) così le voci possono avere un nome; l'elenco dei partecipanti si legge anche senza.</li>
+              </ol>
+              La scheda del registratore ti dice quale passo manca. L'estensione per il browser di Meet resta un'alternativa solo per l'elenco dei partecipanti (qualsiasi sistema con Chrome).
+            </li>
+            <li><strong>Windows</strong>: niente da configurare. Se il microfono non si sente, controlla <strong>Impostazioni → Privacy e sicurezza → Microfono</strong> e consenti l'accesso alle app desktop.</li>
+            <li><strong>Linux</strong>: serve PulseAudio o PipeWire, che la maggior parte dei desktop ha già.</li>
+          </ul>
+        </section>
+
+        <section class="card" id="per-iniziare">
+          <h2>Per iniziare</h2>
+          <ol>
+            <li><strong>Impostazioni → Collegamenti</strong>: ogni servizio è una scheda con un pulsante <strong>Collega</strong> che apre l'accesso nel browser; non ci sono chiavi API o token da cercare. In <strong>Assistente AI</strong> scegli <strong>Continua con ChatGPT</strong> (piano ChatGPT Plus/Pro) o l'accesso con OpenRouter; il modello integrato <strong>Locale / privato</strong> è indicato come in arrivo. La scelta gratuita oggi resta <strong>Google Gemini</strong>, in <strong>Avanzate → Usa una tua chiave</strong>: crea una chiave gratuita su <a href="https://aistudio.google.com/apikey">aistudio.google.com/apikey</a> e incollala. L'app usa Gemini 3.5 Flash-Lite, poi Gemini 3.1 Flash-Lite, poi Gemma 4 quando un modello non risponde o raggiunge il limite giornaliero gratuito (circa 1.000 domande al giorno prima di Gemma). Anche OpenAI e Anthropic accettano una chiave lì. Un abbonamento Claude non si può usare: Anthropic consente solo chiavi API nelle app di terze parti.</li>
+            <li><strong>Impostazioni → Trascrizione</strong>: scegli la lingua parlata nelle tue riunioni.</li>
+            <li>Facoltativo, <strong>Impostazioni → Collegamenti → I tuoi strumenti</strong>: collega Jira, GitHub, GitLab o Azure DevOps con lo stesso accesso dal browser.</li>
+            <li>Premi il pulsante di registrazione quando inizia una riunione e fermalo alla fine. Gli appunti compaiono nella cronologia; fai domande in <em>Chiedi alle tue riunioni</em>.</li>
+          </ol>
+        </section>
+
+        <section class="card" id="collega-un-assistente-ai">
+          <h2>Collegare un assistente AI</h2>
+          <p>Appunto può fare da server <a href="https://modelcontextprotocol.io">MCP</a> locale, così un assistente AI può usare le tue riunioni e le tue cose da fare. Apri <strong>Collega un'AI</strong> nella barra laterale e accendi il server, poi:</p>
+          <ul>
+            <li><strong>Claude Desktop</strong>: premi <strong>Collega</strong> e riavvia Claude Desktop. Appunto si aggiunge a <code>claude_desktop_config.json</code> e tiene una copia del file precedente.</li>
+            <li><strong>Claude Code</strong>: copia il comando mostrato nella pagina ed eseguilo in un terminale. È simile a <code>claude mcp add --transport stdio --scope user appunto -- /percorso/di/Appunto --mcp</code>.</li>
+            <li>
+              <strong>Codex</strong>: copia il blocco mostrato nella pagina in <code>~/.codex/config.toml</code>:
+              <pre><code>[mcp_servers.appunto]
+command = "/percorso/di/Appunto"
+args = ["--mcp"]</code></pre>
+            </li>
+            <li><strong>Un altro assistente</strong>: usa il JSON mostrato in <strong>Un’altra AI</strong> (<code>mcpServers.appunto</code> con <code>command</code> e <code>args: ["--mcp"]</code>).</li>
+          </ul>
+          <p>La pagina mostra sempre il percorso reale della tua app Appunto. In <strong>Cosa può vedere</strong> scegli cosa condividere: riunioni e decisioni, trascrizioni complete, cose da fare, nomi dei partecipanti. In <strong>Cosa può fare</strong> scegli se può solo leggere o anche aggiungere e spuntare cose da fare. Le modifiche valgono subito, senza riavviare l'assistente. La pagina elenca le richieste recenti dell'assistente. <strong>Esporta tutto</strong> salva ogni riunione in Markdown più un file JSON in <code>Documenti/Appunto</code>.</p>
+        </section>
+
+        <section class="card" id="compila-dal-codice">
+          <h2>Compilare dal codice</h2>
+          <p>Serve solo se vuoi modificare il codice. Per usare l'app e basta, vai su <a href="download.html">Scarica</a>.</p>
+          <p>Requisiti: Node.js 24, Rust (stable, 1.88+), CMake, Git e un compilatore C/C++.</p>
+          <ul>
+            <li>Pacchetti in più per <strong>Linux</strong>: <code>libwebkit2gtk-4.1-dev libgtk-3-dev libayatana-appindicator3-dev librsvg2-dev libasound2-dev libssl-dev pkg-config</code> (+ <code>patchelf</code> per AppImage).</li>
+            <li><strong>Windows</strong>: Visual Studio 2022 Build Tools con il carico di lavoro C++.</li>
+          </ul>
+          <pre><code>npm install
+
+# Compila una volta i motori inclusi per la tua piattaforma (voce, AI locale)
+scripts/build-whisper.sh          # macOS / Linux
+pwsh scripts/build-whisper.ps1    # Windows
+scripts/build-llama.sh            # macOS / Linux
+pwsh scripts/build-llama.ps1      # Windows
+
+npm run tauri dev                 # avvia in sviluppo
+npm run tauri build               # crea gli installer in src-tauri/target/release/bundle</code></pre>
+          <p><code>build-whisper</code> compila una versione fissata di whisper.cpp (<code>whisper-server</code>, che resta acceso mentre registri così il modello vocale si carica una volta sola) e <code>build-llama</code> una versione fissata di llama.cpp (<code>llama-server</code>), entrambi con Metal su macOS e CPU altrove, in <code>src-tauri/binaries/</code> (ignorata da git). Senza di loro l'app si compila lo stesso, ma la registrazione (whisper) o il modello AI locale (llama-server) sono disattivati.</p>
+          <p>Variabili per sviluppatori: <code>APPUNTO_WHISPER_SERVER_BIN=/percorso/di/whisper-server</code>, <code>APPUNTO_WHISPER_MODEL=/percorso/di/model.bin</code>, <code>APPUNTO_LLAMA_BIN=/percorso/di/llama-server</code> e <code>APPUNTO_LLAMA_MODEL=/percorso/di/model.gguf</code> (qualsiasi modello chat GGUF).</p>
+
+          <h3>Test</h3>
+          <pre><code>npx ng test --watch=false
+cd src-tauri &amp;&amp; cargo test --lib</code></pre>
+          <p>I test Rust coprono i flussi OAuth e MCP di ogni connettore contro server finti locali, il download del modello (ripresa, checksum, annullamento), il ciclo di vita del modello locale (avvio, stato, arresto quando inattivo) contro un server finto, e la gestione di crash, timeout e riavvio del server whisper, il filtro delle allucinazioni e la rimozione dell'eco contro un server finto. Non servono rete né account.</p>
+
+          <h3>Configurazione facoltativa in compilazione</h3>
+          <table>
+            <thead>
+              <tr><th>Variabile</th><th>Serve per</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code>APPUNTO_GITHUB_CLIENT_ID</code></td><td>Connettore GitHub (una GitHub OAuth App con Device Flow attivo)</td></tr>
+              <tr><td><code>APPUNTO_AZURE_CLIENT_ID</code> (+ <code>APPUNTO_AZURE_TENANT</code>)</td><td>Connettore Azure DevOps (un'app client pubblica Microsoft Entra)</td></tr>
+              <tr><td><code>APPUNTO_GOOGLE_CLIENT_ID</code> (+ <code>APPUNTO_GOOGLE_CLIENT_SECRET</code>)</td><td>Connettore Google: titoli delle riunioni e nomi dei partecipanti da Calendario e Meet (un client OAuth Google Cloud di tipo «App desktop»; il workflow Release li legge dalla variabile <code>APPUNTO_GOOGLE_CLIENT_ID</code> e dal secret <code>APPUNTO_GOOGLE_CLIENT_SECRET</code>)</td></tr>
+            </tbody>
+          </table>
+          <p>Senza di loro quei connettori risultano non disponibili. I passi per configurarli sono in <code>architecture.md</code>, sezione 9.</p>
+
+          <h3>Release</h3>
+          <p>Fai il push di un tag <code>vX.Y.Z</code>. Il workflow <em>Release</em> compila il motore vocale e gli installer per macOS (arm64, x64), Windows (x64) e Linux (x64, arm64) e crea una bozza di GitHub Release. I secret per la firma del codice sono facoltativi e sono elencati in <code>.github/workflows/release.yml</code>.</p>
+        </section>
+
+        <section class="card" id="documentazione">
+          <h2>Documentazione e licenza</h2>
+          <p><code>architecture.md</code> nel codice sorgente descrive i processi, i comandi e gli eventi IPC, lo schema del database, i connettori e il modello di sicurezza. Appunto è distribuito con licenza MIT.</p>
+        </section>
+      </div>
+
+      <div lang="en" data-lang-only="en" hidden>
+        <p class="eyebrow">Guide</p>
+        <h1>All about Appunto</h1>
+        <p class="lead">A private meeting recorder and second brain for macOS, Windows and Linux. No bots join your calls. Everything is transcribed on your computer.</p>
+
+        <section class="card" id="what-it-does">
           <h2>What it does</h2>
           <p>Appunto records the audio of any call (Google Meet, Zoom, Teams, …) straight from your computer, transcribes it locally with <a href="https://github.com/ggml-org/whisper.cpp">whisper.cpp</a>, and turns it into a searchable memory:</p>
           <ul>
@@ -185,16 +329,18 @@ cd src-tauri &amp;&amp; cargo test --lib</code></pre>
           <h2>Documentation and license</h2>
           <p><code>architecture.md</code> in the source code describes the processes, IPC commands and events, database schema, connectors and security model. Appunto is released under the MIT License.</p>
         </section>
-      </main>
+      </div>
+    </main>
 
     <footer>
       <div class="wrap">
         <img src="logo.svg" alt="" width="28" height="28" />
         <span>© 2026 Appunto</span>
-        <a href="privacy.html">Privacy</a>
-        <a href="terms.html">Terms</a>
-        <a href="guide.html">Guide</a>
-        <a href="mailto:bydamiano07@gmail.com">Contact</a>
+        <a href="download.html" data-i18n="nav.download">Scarica</a>
+        <a href="guide.html" data-i18n="nav.guide">Guida</a>
+        <a href="privacy.html" data-i18n="nav.privacy">Privacy</a>
+        <a href="terms.html" data-i18n="nav.terms">Termini</a>
+        <a href="mailto:bydamiano07@gmail.com" data-i18n="foot.contact">Contatti</a>
       </div>
     </footer>
   </body>

@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Guide · Appunto</title>
+    <meta name="description" content="What Appunto does, how to install it, first start, connecting an AI assistant and building from source." />
+    <link rel="icon" href="logo.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="top">
+        <a class="brand" href="./"><img class="mark" src="logo.svg" alt="" width="38" height="38" /><span>App<b>unto</b></span></a>
+        <nav class="links" aria-label="Site">
+          <a href="./">Home</a>
+          <a href="download.html">Download</a>
+          <a href="guide.html" aria-current="page">Guide</a>
+          <a href="privacy.html">Privacy</a>
+          <a href="terms.html">Terms</a>
+        </nav>
+      </header>
+
+      <main class="guide">
+        <h1>Guide</h1>
+        <p class="lead">
+          A private meeting recorder and second brain for macOS, Windows and Linux. No bots join your calls. Everything is transcribed on your computer.
+        </p>
+
+        <section class="card">
+          <h2>What it does</h2>
+          <p>Appunto records the audio of any call (Google Meet, Zoom, Teams, …) straight from your computer, transcribes it locally with <a href="https://github.com/ggml-org/whisper.cpp">whisper.cpp</a>, and turns it into a searchable memory:</p>
+          <ul>
+            <li><strong>Timeline</strong> of every meeting with the decisions, action items, Jira tickets, issues and pull requests mentioned — in the order they happened.</li>
+            <li><strong>To-dos</strong> (“Da fare”): every action item heard in a meeting becomes a to-do once, with a link back to the moment it was said. Tick them off, add your own, set who and when, and see the week's progress.</li>
+            <li><strong>Ask about your meetings</strong>: “What did we decide about PROJ-142?” — answers quote the exact moment, with a link to the transcript.</li>
+            <li><strong>Connect an AI</strong> (optional, off by default): Claude Desktop, Claude Code, Codex or any MCP client can search your meetings, read transcripts and manage your to-dos. You choose what it sees; see <a href="#connect-an-ai-assistant">Connect an AI assistant</a>.</li>
+            <li><strong>Connected tools</strong> (optional): Jira / Confluence (Atlassian), GitHub, GitLab and Azure DevOps through their official MCP servers, with a browser sign-in — no tokens to copy.</li>
+            <li><strong>Who was in the call</strong> (optional): sign in with Google once and each recording gets the title of its Calendar event and the names of the people invited and, for Google Meet calls, of those who actually joined — without any bot in the meeting. Names can also be added by hand.</li>
+            <li><strong>Speakers named automatically</strong> (macOS, optional): while recording, the app reads the open Google Meet tab in Chrome, Edge, Brave or Safari (Arc: experimental) — the participant list and, when Meet's captions (CC) are on, who is talking — and puts the right name on “Speaker 1”, “Speaker 2”, … No extension, no bot, no Google sign-in; it needs a one-time browser setting (see <a href="#first-start">First start</a>).</li>
+            <li><strong>Your choice of AI</strong>: <strong>Google Gemini</strong> with a free API key (the app picks the model for you and switches automatically when one hits its daily limit), your <strong>ChatGPT Plus/Pro plan</strong> (sign in, no API key), OpenAI, Anthropic or OpenRouter.</li>
+            <li>English and Italian interface; transcription in 12 languages.</li>
+          </ul>
+        </section>
+
+        <section class="card" id="privacy">
+          <h2>Privacy</h2>
+          <ul>
+            <li>Audio never leaves your computer. Recordings are transcribed locally and stored in a local SQLite database.</li>
+            <li>When you ask a question, only the few transcript snippets relevant to it are sent to the AI provider you chose.</li>
+            <li>Connected tools receive only identifiers (e.g. <code>PROJ-142</code>, <code>owner/repo#12</code>), never transcript text. Google receives only the time window of a recording and the meeting code; participant names stay in the local database.</li>
+            <li>Reading the Google Meet tab (macOS) happens on your computer and only while recording: the app reads participant names and <em>who</em> was talking <em>when</em>; caption text is never read or stored, and nothing is sent anywhere. With <strong>Recognize voices</strong> on, a voice named this way is saved as a voice print so later meetings recognize the person; voices can be deleted any time in Settings.</li>
+            <li>The browser setting <strong>Allow JavaScript from Apple Events</strong> lets every app you allow under <em>Privacy &amp; Security → Automation</em> run scripts in your browser tabs, not just Appunto. Allow only apps you trust, and turn the setting off again if you stop using the feature.</li>
+            <li>API keys and sign-in tokens are stored on your computer in <code>secrets.json</code> inside the app data folder, readable only by your user account. They are not encrypted, so anyone (or any program) running as your user can read them.</li>
+            <li><strong>Connect an AI</strong> is off until you turn it on. Appunto opens no network port for it: the assistant on your computer starts Appunto and reads through it. Whatever the assistant reads leaves your computer and goes to that assistant's provider (Anthropic, OpenAI, …), so share only what you are comfortable with. Voice prints and audio are never shared.</li>
+            <li>Recording other people may require their consent where you live — tell participants when you record.</li>
+          </ul>
+          <p><strong>Gemini free tier:</strong> Google may use free-tier prompts and responses to improve its products. For confidential meetings, enable billing on your key or pick another provider.</p>
+          <p>The full policy is on the <a href="privacy.html">Privacy</a> page.</p>
+        </section>
+
+        <section class="card" id="install">
+          <h2>Install</h2>
+          <p>No terminal, no setup: download one file, install it like any other app, open it. Get the file for your computer and the install steps on the <a href="download.html">Download</a> page.</p>
+        </section>
+
+        <section class="card" id="first-start">
+          <h2>First start</h2>
+          <ul>
+            <li>The app downloads its speech model once (about 574 MB). Keep it open until the progress bar finishes. The file is checked against a checksum and stays on your computer.</li>
+            <li>Questions about your meetings are answered by a model built into the app (“Local (private)”): press <strong>Download</strong> on its card (about 2.7 GB, once) and nothing leaves your computer. Or pick a cloud provider in Settings instead.</li>
+            <li><strong>macOS</strong>: the first recording asks for <strong>Microphone</strong> and <strong>Screen &amp; System Audio Recording</strong> permission. Allow both, then quit and reopen the app.</li>
+            <li>
+              <strong>macOS, speaker names from Google Meet</strong> (optional):
+              <ol>
+                <li>In the browser you use for Meet, turn on <strong>Allow JavaScript from Apple Events</strong>: Chrome, Edge, Brave — <strong>View → Developer</strong>; Safari — <strong>Develop</strong> menu (show it with <strong>Safari → Settings → Advanced → Show features for web developers</strong>).</li>
+                <li>At the first recording with the browser open, macOS asks whether Appunto may control it: click <strong>Allow</strong> (later: <strong>System Settings → Privacy &amp; Security → Automation</strong>).</li>
+                <li>In the Meet call, turn on captions (<strong>CC</strong>) so the voices can be named; the participant list is read without them.</li>
+              </ol>
+              The recorder card says which step is missing. The Meet browser extension remains an alternative for the participant list only (any OS with Chrome).
+            </li>
+            <li><strong>Windows</strong>: nothing to set up. If no microphone is heard, check <strong>Settings → Privacy &amp; security → Microphone</strong> and allow desktop apps.</li>
+            <li><strong>Linux</strong>: needs PulseAudio or PipeWire, which most desktops already have.</li>
+          </ul>
+        </section>
+
+        <section class="card" id="getting-started">
+          <h2>Getting started</h2>
+          <ol>
+            <li><strong>Settings → Connections</strong>: every service is one card with a <strong>Connect</strong> button that opens a sign-in in your browser; there are no API keys or tokens to find. Under <strong>AI assistant</strong>, choose <strong>Continue with ChatGPT</strong> (ChatGPT Plus/Pro plan) or <strong>Sign in with OpenRouter</strong>; the built-in <strong>Local (private)</strong> model is listed as coming soon. The free choice today is still <strong>Google Gemini</strong>, under <strong>Advanced → Use your own key</strong>: create a free key at <a href="https://aistudio.google.com/apikey">aistudio.google.com/apikey</a> and paste it. The app uses Gemini 3.5 Flash-Lite, then Gemini 3.1 Flash-Lite, then Gemma 4 when a model fails or reaches its free daily limit (about 1,000 questions a day before Gemma). OpenAI and Anthropic also take a key there. A Claude subscription cannot be used: Anthropic only allows API keys in third-party apps.</li>
+            <li><strong>Settings → Transcription</strong>: choose the language spoken in your meetings.</li>
+            <li>Optional — <strong>Settings → Connections → Your tools</strong>: connect Jira, GitHub, GitLab or Azure DevOps with the same browser sign-in.</li>
+            <li>Press the record button when a meeting starts and stop it at the end. Notes appear on the timeline; ask questions in <em>Ask about your meetings</em>.</li>
+          </ol>
+        </section>
+
+        <section class="card" id="connect-an-ai-assistant">
+          <h2>Connect an AI assistant</h2>
+          <p>Appunto can act as a local <a href="https://modelcontextprotocol.io">MCP</a> server, so an AI assistant can use your meetings and to-dos. Open <strong>Connect an AI</strong> in the sidebar and switch the server on, then:</p>
+          <ul>
+            <li><strong>Claude Desktop</strong>: press <strong>Connect</strong> and restart Claude Desktop. Appunto adds itself to <code>claude_desktop_config.json</code> and keeps a backup of the previous file.</li>
+            <li><strong>Claude Code</strong>: copy the command shown on the page and run it in a terminal. It looks like <code>claude mcp add --transport stdio --scope user appunto -- /path/to/Appunto --mcp</code>.</li>
+            <li>
+              <strong>Codex</strong>: copy the block shown on the page into <code>~/.codex/config.toml</code>:
+              <pre><code>[mcp_servers.appunto]
+command = "/path/to/Appunto"
+args = ["--mcp"]</code></pre>
+            </li>
+            <li><strong>Another assistant</strong>: use the JSON shown under <strong>Another AI</strong> (<code>mcpServers.appunto</code> with <code>command</code> and <code>args: ["--mcp"]</code>).</li>
+          </ul>
+          <p>The page always shows the real path of your Appunto app. Under <strong>What it can see</strong> choose what to share: meetings and decisions, full transcripts, to-dos, participant names. Under <strong>What it can do</strong>, choose between read only or also adding and ticking off to-dos. Changes apply right away, with no need to restart the assistant. The page lists the assistant's recent requests. <strong>Export everything</strong> saves every meeting as Markdown plus a JSON file in <code>Documents/Appunto</code>.</p>
+        </section>
+
+        <section class="card" id="build-from-source">
+          <h2>Build from source</h2>
+          <p>Only needed if you want to change the code. To just use the app, follow <a href="download.html">Download</a>.</p>
+          <p>Requirements: Node.js 24, Rust (stable, 1.88+), CMake, Git and a C/C++ compiler.</p>
+          <ul>
+            <li><strong>Linux</strong> extra packages: <code>libwebkit2gtk-4.1-dev libgtk-3-dev libayatana-appindicator3-dev librsvg2-dev libasound2-dev libssl-dev pkg-config</code> (+ <code>patchelf</code> for AppImage).</li>
+            <li><strong>Windows</strong>: Visual Studio 2022 Build Tools with the C++ workload.</li>
+          </ul>
+          <pre><code>npm install
+
+# Build the bundled engines once for your platform (speech, local AI)
+scripts/build-whisper.sh          # macOS / Linux
+pwsh scripts/build-whisper.ps1    # Windows
+scripts/build-llama.sh            # macOS / Linux
+pwsh scripts/build-llama.ps1      # Windows
+
+npm run tauri dev                 # run in development
+npm run tauri build               # create installers in src-tauri/target/release/bundle</code></pre>
+          <p><code>build-whisper</code> compiles a pinned whisper.cpp release (<code>whisper-server</code>, kept running while you record so the speech model is loaded once) and <code>build-llama</code> a pinned llama.cpp release (<code>llama-server</code>), both with Metal on macOS and CPU elsewhere, into <code>src-tauri/binaries/</code> (git-ignored). Without them the app still builds, but recording (whisper) or the local AI model (llama-server) is disabled.</p>
+          <p>Developer overrides: <code>APPUNTO_WHISPER_SERVER_BIN=/path/to/whisper-server</code>, <code>APPUNTO_WHISPER_MODEL=/path/to/model.bin</code>, <code>APPUNTO_LLAMA_BIN=/path/to/llama-server</code> and <code>APPUNTO_LLAMA_MODEL=/path/to/model.gguf</code> (any GGUF chat model).</p>
+
+          <h3>Tests</h3>
+          <pre><code>npx ng test --watch=false
+cd src-tauri &amp;&amp; cargo test --lib</code></pre>
+          <p>The Rust tests include the OAuth and MCP flows of every connector against local fake servers, the model download (resume, checksum, cancel), the local model's sidecar lifecycle (start, health, idle stop) against a fake server, and the whisper server's crash/timeout/restart handling, hallucination filter and echo dedupe against a fake server — no network or accounts needed.</p>
+
+          <h3>Optional build-time configuration</h3>
+          <table>
+            <thead>
+              <tr><th>Variable</th><th>Needed for</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code>APPUNTO_GITHUB_CLIENT_ID</code></td><td>GitHub connector (a GitHub OAuth App with Device Flow enabled)</td></tr>
+              <tr><td><code>APPUNTO_AZURE_CLIENT_ID</code> (+ <code>APPUNTO_AZURE_TENANT</code>)</td><td>Azure DevOps connector (a Microsoft Entra public client app)</td></tr>
+              <tr><td><code>APPUNTO_GOOGLE_CLIENT_ID</code> (+ <code>APPUNTO_GOOGLE_CLIENT_SECRET</code>)</td><td>Google connector: meeting titles and participant names from Calendar and Meet (a Google Cloud “Desktop app” OAuth client; the Release workflow reads them from the <code>APPUNTO_GOOGLE_CLIENT_ID</code> variable and <code>APPUNTO_GOOGLE_CLIENT_SECRET</code> secret)</td></tr>
+            </tbody>
+          </table>
+          <p>Without them those connectors are shown as unavailable. The setup steps are in <code>architecture.md</code>, section 9.</p>
+
+          <h3>Releases</h3>
+          <p>Push a tag <code>vX.Y.Z</code>. The <em>Release</em> workflow builds the speech engine and the installers for macOS (arm64, x64), Windows (x64) and Linux (x64, arm64) and creates a draft GitHub Release. Code-signing secrets are optional and listed in <code>.github/workflows/release.yml</code>.</p>
+        </section>
+
+        <section class="card" id="documentation">
+          <h2>Documentation and license</h2>
+          <p><code>architecture.md</code> in the source code describes the processes, IPC commands and events, database schema, connectors and security model. Appunto is released under the MIT License.</p>
+        </section>
+      </main>
+
+      <footer>
+        <span>© 2026 Appunto</span>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="mailto:bydamiano07@gmail.com">Contact</a>
+      </footer>
+    </div>
+  </body>
+</html>

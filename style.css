@@ -55,3 +55,22 @@ code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0
 .tile { width: 38px; height: 38px; border-radius: 12px; display: inline-grid; place-items: center; font-size: 1.1rem; box-shadow: 0 2px 0 var(--edge); }
 .t-sun { background: var(--sun); } .t-sky { background: var(--sky); } .t-mint { background: var(--mint); } .t-grape { background: var(--grape); }
 footer { margin-top: 48px; color: var(--ink-2); font-size: 0.92rem; display: flex; gap: 16px; flex-wrap: wrap; }
+/* Download and guide pages. */
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border-radius: 14px; background: var(--accent); color: #fff; font-weight: 700; text-decoration: none; box-shadow: 0 3px 0 var(--accent-edge); }
+.btn:hover { filter: brightness(1.06); }
+.btn[aria-disabled="true"] { background: var(--sunk); color: var(--ink-2); box-shadow: 0 3px 0 var(--edge); pointer-events: none; }
+.btn.ghost { background: var(--elev); color: var(--ink); border: 1px solid var(--line-strong); box-shadow: 0 3px 0 var(--edge); }
+.cta { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+.dl-list { list-style: none; padding: 0; margin: 14px 0 0; display: grid; gap: 10px; }
+.dl-list li { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin: 0; }
+.dl-list .what { color: var(--ink); }
+.dl-list .what small { display: block; color: var(--ink-2); }
+.card.recommended { border: 2px solid var(--accent); }
+.card .tag { display: inline-block; margin-left: 8px; padding: 2px 10px; border-radius: 999px; background: var(--accent); color: #fff; font-size: 0.8rem; font-weight: 700; vertical-align: middle; }
+.guide h2 { margin-top: 0; }
+.guide h3 { font-size: 1.1rem; margin: 18px 0 6px; }
+table { width: 100%; border-collapse: collapse; font-size: 0.95rem; display: block; overflow-x: auto; }
+th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { color: var(--ink-2); font-weight: 700; }
+pre { background: var(--sunk); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; overflow-x: auto; font-size: 0.86rem; line-height: 1.5; }
+pre code { background: none; border: 0; padding: 0; }

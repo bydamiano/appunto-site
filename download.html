@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Download · Appunto</title>
+    <meta name="description" content="Download Appunto for macOS, Windows and Linux." />
+    <link rel="icon" href="logo.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="top">
+        <a class="brand" href="./"><img class="mark" src="logo.svg" alt="" width="38" height="38" /><span>App<b>unto</b></span></a>
+        <nav class="links" aria-label="Site">
+          <a href="./">Home</a>
+          <a href="download.html" aria-current="page">Download</a>
+          <a href="guide.html">Guide</a>
+          <a href="privacy.html">Privacy</a>
+          <a href="terms.html">Terms</a>
+        </nav>
+      </header>
+
+      <main>
+        <h1>Download Appunto</h1>
+        <p class="meta" id="release-status" role="status">Looking for the latest version…</p>
+        <p class="lead">One file, installed like any other app. On first start Appunto downloads its speech model once (about 574 MB).</p>
+        <noscript>
+          <p class="lead">Open the <a href="https://github.com/bydamiano/appunto-site/releases/latest">latest release</a> and download the file for your computer under <strong>Assets</strong>.</p>
+        </noscript>
+
+        <section class="card" data-os="mac">
+          <h2>macOS</h2>
+          <ul class="dl-list">
+            <li><span class="what">Mac with Apple chip<small>M1, M2, M3, M4, …</small></span><a class="btn" data-asset="mac-arm" aria-disabled="true">.dmg</a></li>
+            <li><span class="what">Mac with Intel chip</span><a class="btn ghost" data-asset="mac-intel" aria-disabled="true">.dmg</a></li>
+          </ul>
+          <p class="meta">Not sure which Mac you have? Apple menu → <strong>About This Mac</strong> → <strong>Chip</strong>.</p>
+        </section>
+
+        <section class="card" data-os="windows">
+          <h2>Windows 10 / 11</h2>
+          <ul class="dl-list">
+            <li><span class="what">Installer</span><a class="btn" data-asset="win-exe" aria-disabled="true">.exe</a></li>
+            <li><span class="what">MSI package<small>For managed computers</small></span><a class="btn ghost" data-asset="win-msi" aria-disabled="true">.msi</a></li>
+          </ul>
+        </section>
+
+        <section class="card" data-os="linux">
+          <h2>Linux</h2>
+          <ul class="dl-list">
+            <li><span class="what">Ubuntu, Debian, Linux Mint<small>x64</small></span><a class="btn" data-asset="deb-x64" aria-disabled="true">.deb</a></li>
+            <li><span class="what">Ubuntu, Debian, Linux Mint<small>ARM64</small></span><a class="btn ghost" data-asset="deb-arm" aria-disabled="true">.deb</a></li>
+            <li><span class="what">Fedora, openSUSE<small>x64</small></span><a class="btn ghost" data-asset="rpm-x64" aria-disabled="true">.rpm</a></li>
+            <li><span class="what">Fedora, openSUSE<small>ARM64</small></span><a class="btn ghost" data-asset="rpm-arm" aria-disabled="true">.rpm</a></li>
+            <li><span class="what">Other Linux<small>x64</small></span><a class="btn ghost" data-asset="appimage-x64" aria-disabled="true">.AppImage</a></li>
+            <li><span class="what">Other Linux<small>ARM64</small></span><a class="btn ghost" data-asset="appimage-arm" aria-disabled="true">.AppImage</a></li>
+          </ul>
+        </section>
+
+        <section class="card">
+          <h2>Install and open</h2>
+          <h3>macOS</h3>
+          <ol>
+            <li>Double-click the <code>.dmg</code> file and drag <strong>Appunto</strong> onto the <strong>Applications</strong> folder.</li>
+            <li>Open <strong>Applications</strong> and double-click <strong>Appunto</strong>.</li>
+            <li>The first time, macOS says it cannot verify the app (it is not signed with a paid Apple certificate yet). Click <strong>Done</strong>, then open <strong>System Settings → Privacy &amp; Security</strong>, scroll down, click <strong>Open Anyway</strong> next to Appunto and confirm. You only do this once.</li>
+          </ol>
+          <h3>Windows</h3>
+          <ol>
+            <li>Double-click the <code>-setup.exe</code> file.</li>
+            <li>If Windows shows “Windows protected your PC”, click <strong>More info → Run anyway</strong> (the app is not code-signed yet).</li>
+            <li>Follow the installer. Appunto then appears in the Start menu.</li>
+          </ol>
+          <h3>Linux</h3>
+          <ul>
+            <li><code>.deb</code> or <code>.rpm</code>: double-click it and choose <strong>Install</strong> in the Software app.</li>
+            <li><code>.AppImage</code>: right-click it → <strong>Properties</strong> → <strong>Permissions</strong> → tick <strong>Allow executing file as program</strong>, then double-click it.</li>
+          </ul>
+          <p>More in the <a href="guide.html#first-start">guide</a>.</p>
+        </section>
+      </main>
+
+      <footer>
+        <span>© 2026 Appunto</span>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="mailto:bydamiano07@gmail.com">Contact</a>
+      </footer>
+    </div>
+
+    <script>
+      (function () {
+        const RELEASES = 'https://github.com/bydamiano/appunto-site/releases/latest';
+        const API = 'https://api.github.com/repos/bydamiano/appunto-site/releases/latest';
+        // Tauri bundle names, e.g. Appunto_0.2.0_aarch64.dmg, Appunto-0.2.0-1.x86_64.rpm.
+        const MATCHERS = {
+          'mac-arm': /_aarch64\.dmg$/,
+          'mac-intel': /_x64\.dmg$/,
+          'win-exe': /_x64-setup\.exe$/,
+          'win-msi': /_x64_en-US\.msi$/,
+          'deb-x64': /_amd64\.deb$/,
+          'deb-arm': /_arm64\.deb$/,
+          'rpm-x64': /\.x86_64\.rpm$/,
+          'rpm-arm': /\.aarch64\.rpm$/,
+          'appimage-x64': /_amd64\.AppImage$/,
+          'appimage-arm': /_aarch64\.AppImage$/,
+        };
+        const status = document.getElementById('release-status');
+
+        // Highlight the visitor's system.
+        const ua = navigator.userAgent;
+        const os = /Mac/i.test(ua) ? 'mac' : /Win/i.test(ua) ? 'windows' : /Linux|X11/i.test(ua) ? 'linux' : null;
+        const mine = os && document.querySelector('[data-os="' + os + '"]');
+        if (mine) {
+          mine.classList.add('recommended');
+          const tag = document.createElement('span');
+          tag.className = 'tag';
+          tag.textContent = 'Your computer';
+          mine.querySelector('h2').append(tag);
+          mine.parentNode.insertBefore(mine, document.querySelector('[data-os]'));
+        }
+
+        function fallback() {
+          status.textContent = 'Could not load the file list. ';
+          const a = document.createElement('a');
+          a.href = RELEASES;
+          a.textContent = 'Open the latest release on GitHub';
+          status.append(a, '.');
+        }
+
+        fetch(API, { headers: { Accept: 'application/vnd.github+json' } })
+          .then((r) => (r.ok ? r.json() : Promise.reject(new Error('HTTP ' + r.status))))
+          .then((release) => {
+            const assets = Array.isArray(release.assets) ? release.assets : [];
+            let found = 0;
+            for (const [key, re] of Object.entries(MATCHERS)) {
+              const asset = assets.find((a) => typeof a.name === 'string' && re.test(a.name));
+              const url = asset && String(asset.browser_download_url || '');
+              if (!url.startsWith('https://github.com/')) continue;
+              const link = document.querySelector('[data-asset="' + key + '"]');
+              link.href = url;
+              link.removeAttribute('aria-disabled');
+              link.textContent = link.textContent + ' · ' + Math.round(asset.size / 1e6) + ' MB';
+              found++;
+            }
+            if (!found) return fallback();
+            const date = new Date(release.published_at).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+            status.textContent = 'Version ' + String(release.tag_name || '').replace(/^v/, '') + ' · ' + date;
+          })
+          .catch(fallback);
+      })();
+    </script>
+  </body>
+</html>

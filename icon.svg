@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <!-- Appunto app icon (source for `tauri icon`): a chunky violet tile with a speech bubble of sound bars and a record dot. Tile follows the macOS 824px grid. -->
+  <g transform="translate(100 100) scale(12.875)">
+    <rect x="0" y="4" width="64" height="60" rx="19" fill="#5b21b6"/>
+    <rect x="0" y="0" width="64" height="60" rx="19" fill="#8b5cf6"/>
+    <path d="M18 14h28a8 8 0 0 1 8 8v12a8 8 0 0 1-8 8H32l-9 8v-8h-5a8 8 0 0 1-8-8V22a8 8 0 0 1 8-8z" fill="#fff"/>
+    <rect x="22" y="23" width="4" height="10" rx="2" fill="#8b5cf6"/>
+    <rect x="30" y="19" width="4" height="18" rx="2" fill="#8b5cf6"/>
+    <rect x="38" y="22" width="4" height="12" rx="2" fill="#8b5cf6"/>
+    <circle cx="51" cy="13" r="7" fill="#ff5a5f" stroke="#5b21b6" stroke-width="2.5"/>
+  </g>
+</svg>

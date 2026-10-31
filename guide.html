@@ -2,16 +2,38 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Guide · Appunto</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Appunto guide: install, first start and AI assistants</title>
     <meta name="description" content="What Appunto does, how to install it, first start, connecting an AI assistant and building from source." />
-    <link rel="icon" href="logo.svg" type="image/svg+xml" />
+    <link rel="canonical" href="https://bydamiano.github.io/appunto-site/guide.html" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#0d0d17" />
+    <link rel="icon" href="favicon.ico" sizes="any" />
+    <link rel="icon" href="icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <link rel="manifest" href="site.webmanifest" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Appunto" />
+    <meta property="og:title" content="Appunto guide: install, first start and AI assistants" />
+    <meta property="og:description" content="What Appunto does, how to install it, first start, connecting an AI assistant and building from source." />
+    <meta property="og:url" content="https://bydamiano.github.io/appunto-site/guide.html" />
+    <meta property="og:image" content="https://bydamiano.github.io/appunto-site/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="en_US" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Appunto guide: install, first start and AI assistants" />
+    <meta name="twitter:description" content="What Appunto does, how to install it, first start, connecting an AI assistant and building from source." />
+    <meta name="twitter:image" content="https://bydamiano.github.io/appunto-site/og.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Figtree:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="wrap">
-      <header class="top">
-        <a class="brand" href="./"><img class="mark" src="logo.svg" alt="" width="38" height="38" /><span>App<b>unto</b></span></a>
+    <header class="top">
+      <div class="wrap top-in">
+        <a class="brand" href="./"><img src="logo.svg" alt="" width="38" height="38" /><span>App<span class="unto">unto</span></span></a>
         <nav class="links" aria-label="Site">
           <a href="./">Home</a>
           <a href="download.html">Download</a>
@@ -19,9 +41,14 @@
           <a href="privacy.html">Privacy</a>
           <a href="terms.html">Terms</a>
         </nav>
-      </header>
+        <div class="top-actions">
+          <a class="btn btn-primary btn-sm" href="download.html">Download</a>
+        </div>
+      </div>
+      <div class="progress" aria-hidden="true"></div>
+    </header>
 
-      <main class="guide">
+    <main class="wrap page prose">
         <h1>Guide</h1>
         <p class="lead">
           A private meeting recorder and second brain for macOS, Windows and Linux. No bots join your calls. Everything is transcribed on your computer.
@@ -160,12 +187,15 @@ cd src-tauri &amp;&amp; cargo test --lib</code></pre>
         </section>
       </main>
 
-      <footer>
+    <footer>
+      <div class="wrap">
+        <img src="logo.svg" alt="" width="28" height="28" />
         <span>© 2026 Appunto</span>
         <a href="privacy.html">Privacy</a>
         <a href="terms.html">Terms</a>
+        <a href="guide.html">Guide</a>
         <a href="mailto:bydamiano07@gmail.com">Contact</a>
-      </footer>
-    </div>
+      </div>
+    </footer>
   </body>
 </html>

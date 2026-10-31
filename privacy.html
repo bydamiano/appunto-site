@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Privacy Policy · Appunto</title>
+    <meta name="description" content="What Appunto records, what stays on your computer, what is sent and where, and how to remove it." />
+    <link rel="icon" href="logo.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="top">
+        <a class="brand" href="./"><img class="mark" src="logo.svg" alt="" width="38" height="38" /><span>App<b>unto</b></span></a>
+        <nav class="links" aria-label="Site">
+          <a href="./">Home</a>
+          <a href="privacy.html" aria-current="page">Privacy</a>
+          <a href="terms.html">Terms</a>
+        </nav>
+      </header>
+
+      <main>
+        <h1>Privacy Policy</h1>
+        <p class="meta">Last updated October 31, 2026</p>
+        <p class="lead">
+          Appunto is a desktop app (macOS, Windows, Linux) that records your meetings and turns them into searchable notes.
+          It runs on your computer. There is no Appunto server: the developer never receives your recordings, transcripts, account tokens or API keys.
+        </p>
+
+        <section class="card">
+          <h2>Who we are</h2>
+          <p>Appunto is developed by Damiano Maka, an independent developer. Contact: <a href="mailto:bydamiano07@gmail.com">bydamiano07@gmail.com</a>.</p>
+        </section>
+
+        <section class="card">
+          <h2>What the app records</h2>
+          <ul>
+            <li><strong>Audio, only while you record.</strong> Appunto captures your computer's audio and your microphone between the moment you press record and the moment you stop. No bot joins the call.</li>
+            <li><strong>Transcribed on your computer.</strong> The audio is transcribed locally by a built-in speech engine (whisper.cpp). Raw audio never leaves your computer; short audio pieces are deleted once transcribed (pieces that failed are kept in the app's cache so they can be retried).</li>
+            <li><strong>Speakers.</strong> Telling voices apart (“Speaker 1”, “Speaker 2”) happens on your computer. Saving a <em>voice print</em> so a person is recognized in later meetings is off by default; when you turn it on, voice prints are biometric data kept only in the local database and can be deleted one by one or all at once in Settings. Voice prints are never sent anywhere.</li>
+            <li><strong>Google Meet tab (macOS, optional).</strong> While recording, the app can read the open Google Meet tab in your browser to learn participant names and who is talking. Caption text is never read or stored, and nothing is sent anywhere.</li>
+          </ul>
+        </section>
+
+        <section class="card">
+          <h2>Google account (optional)</h2>
+          <p>If you connect Google, your Google account asks you to allow these read-only permissions:</p>
+          <ul>
+            <li><code>openid</code> and <code>email</code>: to show which account is connected.</li>
+            <li><code>https://www.googleapis.com/auth/calendar.events.readonly</code>: to find the Calendar event that matches a recording and use its title and the names and email addresses of the people invited.</li>
+            <li><code>https://www.googleapis.com/auth/meetings.space.readonly</code>: for Google Meet calls, to read the display names of the people who actually joined.</li>
+          </ul>
+          <p>Appunto asks Google only for the events around the time of a recording and for the Meet call with that meeting code. The results are stored in the local database on your computer. Appunto never changes your calendar or your meetings.</p>
+        </section>
+
+        <section class="card">
+          <h2>Google API Services User Data Policy</h2>
+          <p>Appunto's use and transfer to any other app of information received from Google APIs will adhere to the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including the Limited Use requirements.</p>
+          <p>Data from Google, and from every other service, is not used for advertising, is not sold, is not shared with the developer and is not used by the developer to train AI or machine-learning models.</p>
+        </section>
+
+        <section class="card">
+          <h2>Other connected tools (optional)</h2>
+          <p>You can connect GitHub (permission <code>repo</code>), GitLab, Jira and Confluence (Atlassian) and Azure DevOps with a browser sign-in. Appunto sends them only identifiers it heard in a meeting, such as <code>PROJ-142</code> or <code>owner/repo#12</code>, to show the title and status of those issues and pull requests. Transcript text is never sent to them.</p>
+        </section>
+
+        <section class="card">
+          <h2>Asking questions about your meetings</h2>
+          <p>When the built-in local language model is selected, questions are answered on your computer and nothing leaves it.</p>
+          <p>
+            When you choose an online AI provider (Google Gemini, OpenAI, your ChatGPT plan, Anthropic or OpenRouter), Appunto sends that provider your question and the few transcript snippets relevant to it,
+            directly from your computer, with your own key or account. That provider's terms and privacy policy apply. Google may use prompts sent with a free Gemini key to improve its products.
+          </p>
+        </section>
+
+        <section class="card">
+          <h2>Connecting an AI assistant (optional)</h2>
+          <p>
+            “Connect an AI” is off until you turn it on. It lets an assistant on your computer (such as Claude or Codex) read your meetings and to-dos through Appunto, within the limits you choose: meetings, transcripts, to-dos, participant names, and whether it may change to-dos.
+            Appunto opens no network port for it. What the assistant reads is sent by the assistant to its own provider, outside Appunto's control. Voice prints and audio are never shared.
+          </p>
+        </section>
+
+        <section class="card">
+          <h2>What is stored, and where</h2>
+          <ul>
+            <li><strong>On your computer only.</strong> Meetings, transcripts, to-dos, participants and settings are kept in the app's local database and settings files.</li>
+            <li>API keys and sign-in tokens are kept in a file in the app's data folder that only your user account can read. They are <strong>not encrypted</strong>, so a program running as your user could read them.</li>
+            <li>The speech model, the speaker models and the optional local language model are downloaded once, when needed, from Hugging Face and GitHub. Those downloads send no personal data.</li>
+            <li>The app has no analytics, no tracking and no telemetry. The developer has no server and receives no data from the app.</li>
+          </ul>
+        </section>
+
+        <section class="card">
+          <h2>Your choices</h2>
+          <ul>
+            <li>Delete any meeting in the app: its transcript and notes are removed from the local database.</li>
+            <li>Delete one or all saved voices in Settings.</li>
+            <li>Disconnect any connected service in Settings: its tokens are deleted from your computer. You can also revoke access from the service, for example <a href="https://myaccount.google.com/permissions">Google</a> or <a href="https://github.com/settings/applications">GitHub</a>.</li>
+            <li>Uninstalling the app and deleting its data folder (<code>com.appunto.app</code>) removes everything it stored.</li>
+          </ul>
+        </section>
+
+        <section class="card">
+          <h2>Recording other people</h2>
+          <p>Recording a conversation may require the consent of the other participants where you live. Tell participants when you record.</p>
+        </section>
+
+        <section class="card">
+          <h2>Children</h2>
+          <p>Appunto is not intended for children under 16.</p>
+        </section>
+
+        <section class="card">
+          <h2>Changes and contact</h2>
+          <p>If this policy changes, the date above is updated. Questions or requests: <a href="mailto:bydamiano07@gmail.com">bydamiano07@gmail.com</a>.</p>
+        </section>
+      </main>
+
+      <footer>
+        <span>© 2026 Appunto</span>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+      </footer>
+    </div>
+  </body>
+</html>

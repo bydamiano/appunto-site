@@ -64,14 +64,16 @@
           <h2>Cosa fa</h2>
           <p>Appunto registra l'audio di qualsiasi call (Google Meet, Zoom, Teams, …) direttamente dal tuo computer, lo trascrive in locale con <a href="https://github.com/ggml-org/whisper.cpp">whisper.cpp</a> e lo trasforma in una memoria in cui puoi cercare:</p>
           <ul>
-            <li><strong>Cronologia</strong> di ogni riunione con le decisioni, le azioni, i ticket Jira, le issue e le pull request citate, nell'ordine in cui sono successe.</li>
+            <li><strong>Elenco delle riunioni</strong> con le decisioni, le azioni, i ticket Jira, le issue e le pull request di ognuna; filtra per mese e anno, elimina una riunione o tutte insieme.</li>
             <li><strong>Da fare</strong>: ogni azione sentita in riunione diventa una cosa da fare, una volta sola, con il link al momento in cui è stata detta. Spuntale, aggiungi le tue, scegli chi e quando, e guarda l'avanzamento della settimana.</li>
             <li><strong>Chiedi alle tue riunioni</strong>: «Cosa abbiamo deciso su PROJ-142?». Le risposte citano il momento esatto, con il link alla trascrizione.</li>
-            <li><strong>Collega un'AI</strong> (facoltativo, spento all'inizio): Claude Desktop, Claude Code, Codex o qualsiasi client MCP possono cercare nelle riunioni, leggere le trascrizioni e gestire le cose da fare. Scegli tu cosa vede; vedi <a href="#collega-un-assistente-ai">Collegare un assistente AI</a>.</li>
+            <li><strong>MCP</strong> (la scheda per collegare un'AI; facoltativo, spento all'inizio): Claude Desktop, Claude Code, Codex o qualsiasi client MCP possono cercare nelle riunioni, leggere le trascrizioni e gestire le cose da fare. Scegli tu cosa vede; vedi <a href="#collega-un-assistente-ai">Collegare un assistente AI</a>.</li>
             <li><strong>Strumenti collegati</strong> (facoltativo): Jira / Confluence (Atlassian), GitHub, GitLab e Azure DevOps tramite i loro server MCP ufficiali, con l'accesso dal browser. Nessun token da copiare.</li>
             <li><strong>Chi c'era in call</strong> (facoltativo): accedi con Google una volta e ogni registrazione prende il titolo dell'evento del Calendario e i nomi delle persone invitate e, per le call di Google Meet, di chi è entrato davvero, senza bot in riunione. I nomi si possono anche aggiungere a mano.</li>
             <li><strong>Voci con il nome giusto</strong> (macOS, facoltativo): mentre registri, l'app legge la scheda di Google Meet aperta in Chrome, Edge, Brave o Safari (Arc: sperimentale), cioè l'elenco dei partecipanti e, se i sottotitoli (CC) di Meet sono attivi, chi sta parlando, e mette il nome giusto su «Voce 1», «Voce 2», … Senza estensioni, senza bot, senza accesso a Google; serve un'impostazione del browser da attivare una volta (vedi <a href="#primo-avvio">Primo avvio</a>).</li>
             <li><strong>L'AI che preferisci</strong>: <strong>Google Gemini</strong> con una chiave API gratuita (l'app sceglie il modello per te e cambia da sola quando uno raggiunge il limite giornaliero), il tuo <strong>piano ChatGPT Plus/Pro</strong> (accedi, nessuna chiave API), OpenAI, Anthropic o OpenRouter.</li>
+            <li><strong>Missione configurazione</strong>: la Home ti dice cosa manca (microfono, audio della chiamata, modello vocale, nomi da Meet), con un pulsante <strong>Risolvi</strong> e una guida passo passo; ogni passo diventa verde da solo appena funziona.</li>
+            <li><strong>Si aggiorna da sola</strong>: quando esce una nuova versione l'app propone <strong>Aggiorna e riavvia</strong>; riunioni, impostazioni e permessi di macOS restano.</li>
             <li>Interfaccia in italiano e inglese; trascrizione in 12 lingue.</li>
           </ul>
         </section>
@@ -85,7 +87,7 @@
             <li>La lettura della scheda di Google Meet (macOS) avviene sul tuo computer e solo mentre registri: l'app legge i nomi dei partecipanti e <em>chi</em> parlava <em>quando</em>; il testo dei sottotitoli non viene mai letto né salvato, e niente viene inviato. Con il riconoscimento delle voci attivo, una voce a cui hai dato un nome viene salvata come impronta vocale, così le riunioni successive riconoscono la persona; le voci si possono cancellare in qualsiasi momento nelle Impostazioni.</li>
             <li>L'impostazione del browser <strong>Consenti JavaScript dagli Apple Events</strong> permette a ogni app autorizzata in <em>Privacy e sicurezza → Automazione</em> di eseguire script nelle schede del browser, non solo ad Appunto. Autorizza solo app di cui ti fidi, e disattiva l'impostazione se smetti di usare la funzione.</li>
             <li>Le chiavi API e i token di accesso sono salvati sul tuo computer in <code>secrets.json</code>, nella cartella dei dati dell'app, leggibile solo dal tuo account utente. Non sono cifrati, quindi chiunque (o qualsiasi programma) usi il tuo account può leggerli.</li>
-            <li><strong>Collega un'AI</strong> è spento finché non lo accendi. Appunto non apre nessuna porta di rete: è l'assistente sul tuo computer ad avviare Appunto e a leggere attraverso di lui. Quello che l'assistente legge esce dal tuo computer e va al suo fornitore (Anthropic, OpenAI, …), quindi condividi solo ciò che ti va di condividere. Impronte vocali e audio non vengono mai condivisi.</li>
+            <li><strong>MCP</strong> è spento finché non lo accendi. Appunto non apre nessuna porta di rete: è l'assistente sul tuo computer ad avviare Appunto e a leggere attraverso di lui. Quello che l'assistente legge esce dal tuo computer e va al suo fornitore (Anthropic, OpenAI, …), quindi condividi solo ciò che ti va di condividere. Impronte vocali e audio non vengono mai condivisi.</li>
             <li>Registrare altre persone può richiedere il loro consenso dove vivi: avvisa chi partecipa quando registri.</li>
           </ul>
           <p><strong>Gemini gratuito:</strong> Google può usare le richieste e le risposte del piano gratuito per migliorare i suoi prodotti. Per le riunioni riservate attiva la fatturazione sulla tua chiave o scegli un altro fornitore.</p>
@@ -100,9 +102,9 @@
         <section class="card" id="primo-avvio">
           <h2>Primo avvio</h2>
           <ul>
-            <li>L'app scarica una volta il modello vocale (circa 574 MB). Tienila aperta finché la barra di avanzamento non finisce. Il file viene verificato con un checksum e resta sul tuo computer.</li>
+            <li>L'app scarica una volta il modello vocale (circa 874 MB). Tienila aperta finché la barra di avanzamento non finisce. Il file viene verificato con un checksum e resta sul tuo computer.</li>
             <li>Alle domande sulle riunioni risponde un modello integrato nell'app («Locale / privato»): premi <strong>Scarica</strong> sulla sua scheda (circa 2,7 GB, una volta sola) e niente esce dal tuo computer. Oppure scegli un fornitore cloud nelle Impostazioni.</li>
-            <li><strong>macOS</strong>: la prima registrazione chiede i permessi per <strong>Microfono</strong> e <strong>Registrazione schermo e audio di sistema</strong>. Concedili entrambi, poi chiudi e riapri l'app.</li>
+            <li><strong>macOS</strong>: la <strong>Missione configurazione</strong> in Home elenca cosa manca. <strong>Consenti</strong> fa comparire la richiesta di macOS per <strong>Microfono</strong> e <strong>Registrazione schermo e audio di sistema</strong>; <strong>Risolvi</strong> apre una guida passo passo con un pulsante che porta alla pagina giusta delle Impostazioni di Sistema. Dopo la registrazione dello schermo macOS può chiederti di chiudere e riaprire l'app. Lo stesso elenco è sempre nelle <strong>Impostazioni</strong>.</li>
             <li>
               <strong>macOS, nomi delle voci da Google Meet</strong> (facoltativo):
               <ol>
@@ -110,7 +112,7 @@
                 <li>Alla prima registrazione con il browser aperto, macOS chiede se Appunto può controllarlo: premi <strong>Consenti</strong> (in seguito: <strong>Impostazioni di Sistema → Privacy e sicurezza → Automazione</strong>).</li>
                 <li>Nella call di Meet attiva i sottotitoli (<strong>CC</strong>) così le voci possono avere un nome; l'elenco dei partecipanti si legge anche senza.</li>
               </ol>
-              La scheda del registratore ti dice quale passo manca. L'estensione per il browser di Meet resta un'alternativa solo per l'elenco dei partecipanti (qualsiasi sistema con Chrome).
+              Nella Missione configurazione, <strong>Sapere chi parla → Risolvi → Verifica ora</strong> prova subito il tuo browser (macOS chiede lì il permesso di Automazione) e ti dice quale passo manca. L'estensione per il browser di Meet resta un'alternativa solo per l'elenco dei partecipanti (qualsiasi sistema con Chrome).
             </li>
             <li><strong>Windows</strong>: niente da configurare. Se il microfono non si sente, controlla <strong>Impostazioni → Privacy e sicurezza → Microfono</strong> e consenti l'accesso alle app desktop.</li>
             <li><strong>Linux</strong>: serve PulseAudio o PipeWire, che la maggior parte dei desktop ha già.</li>
@@ -120,16 +122,16 @@
         <section class="card" id="per-iniziare">
           <h2>Per iniziare</h2>
           <ol>
-            <li><strong>Impostazioni → Collegamenti</strong>: ogni servizio è una scheda con un pulsante <strong>Collega</strong> che apre l'accesso nel browser; non ci sono chiavi API o token da cercare. In <strong>Assistente AI</strong> scegli <strong>Continua con ChatGPT</strong> (piano ChatGPT Plus/Pro) o l'accesso con OpenRouter; il modello integrato <strong>Locale / privato</strong> è indicato come in arrivo. La scelta gratuita oggi resta <strong>Google Gemini</strong>, in <strong>Avanzate → Usa una tua chiave</strong>: crea una chiave gratuita su <a href="https://aistudio.google.com/apikey">aistudio.google.com/apikey</a> e incollala. L'app usa Gemini 3.5 Flash-Lite, poi Gemini 3.1 Flash-Lite, poi Gemma 4 quando un modello non risponde o raggiunge il limite giornaliero gratuito (circa 1.000 domande al giorno prima di Gemma). Anche OpenAI e Anthropic accettano una chiave lì. Un abbonamento Claude non si può usare: Anthropic consente solo chiavi API nelle app di terze parti.</li>
-            <li><strong>Impostazioni → Trascrizione</strong>: scegli la lingua parlata nelle tue riunioni.</li>
+            <li><strong>Impostazioni → Collegamenti</strong>: ogni servizio è una scheda con un pulsante <strong>Collega</strong> che apre l'accesso nel browser; non ci sono chiavi API o token da cercare. In <strong>Assistente AI</strong> scegli <strong>Continua con ChatGPT</strong> (piano ChatGPT Plus/Pro) o l'accesso con OpenRouter, oppure il modello integrato <strong>Locale / privato</strong> (gratis, niente esce dal computer: si scarica una volta). Un'altra scelta gratuita è <strong>Google Gemini</strong>, in <strong>Avanzate → Usa una tua chiave</strong>: crea una chiave gratuita su <a href="https://aistudio.google.com/apikey">aistudio.google.com/apikey</a> e incollala. L'app usa Gemini 3.5 Flash-Lite, poi Gemini 3.1 Flash-Lite, poi Gemma 4 quando un modello non risponde o raggiunge il limite giornaliero gratuito (circa 1.000 domande al giorno prima di Gemma). Anche OpenAI e Anthropic accettano una chiave lì. Un abbonamento Claude non si può usare: Anthropic consente solo chiavi API nelle app di terze parti.</li>
+            <li><strong>Impostazioni → Lingua</strong>: scegli la lingua dell'app e quella parlata nelle tue riunioni.</li>
             <li>Facoltativo, <strong>Impostazioni → Collegamenti → I tuoi strumenti</strong>: collega Jira, GitHub, GitLab o Azure DevOps con lo stesso accesso dal browser.</li>
-            <li>Premi il pulsante di registrazione quando inizia una riunione e fermalo alla fine. Gli appunti compaiono nella cronologia; fai domande in <em>Chiedi alle tue riunioni</em>.</li>
+            <li>Premi il pulsante di registrazione quando inizia una riunione e fermalo alla fine. Gli appunti compaiono nella riunione, in <strong>Riunioni</strong>; fai domande in <em>Chiedi alle tue riunioni</em>.</li>
           </ol>
         </section>
 
         <section class="card" id="collega-un-assistente-ai">
           <h2>Collegare un assistente AI</h2>
-          <p>Appunto può fare da server <a href="https://modelcontextprotocol.io">MCP</a> locale, così un assistente AI può usare le tue riunioni e le tue cose da fare. Apri <strong>Collega un'AI</strong> nella barra laterale e accendi il server, poi:</p>
+          <p>Appunto può fare da server <a href="https://modelcontextprotocol.io">MCP</a> locale, così un assistente AI può usare le tue riunioni e le tue cose da fare. Apri <strong>MCP</strong> nella barra laterale e accendi il server, poi:</p>
           <ul>
             <li><strong>Claude Desktop</strong>: premi <strong>Collega</strong> e riavvia Claude Desktop. Appunto si aggiunge a <code>claude_desktop_config.json</code> e tiene una copia del file precedente.</li>
             <li><strong>Claude Code</strong>: copia il comando mostrato nella pagina ed eseguilo in un terminale. È simile a <code>claude mcp add --transport stdio --scope user appunto -- /percorso/di/Appunto --mcp</code>.</li>
@@ -202,14 +204,16 @@ cd src-tauri &amp;&amp; cargo test --lib</code></pre>
           <h2>What it does</h2>
           <p>Appunto records the audio of any call (Google Meet, Zoom, Teams, …) straight from your computer, transcribes it locally with <a href="https://github.com/ggml-org/whisper.cpp">whisper.cpp</a>, and turns it into a searchable memory:</p>
           <ul>
-            <li><strong>Timeline</strong> of every meeting with the decisions, action items, Jira tickets, issues and pull requests mentioned — in the order they happened.</li>
+            <li><strong>Meeting list</strong> with the decisions, action items, Jira tickets, issues and pull requests of each meeting; filter by month and year, delete one or all at once.</li>
             <li><strong>To-dos</strong> (“Da fare”): every action item heard in a meeting becomes a to-do once, with a link back to the moment it was said. Tick them off, add your own, set who and when, and see the week's progress.</li>
             <li><strong>Ask about your meetings</strong>: “What did we decide about PROJ-142?” — answers quote the exact moment, with a link to the transcript.</li>
-            <li><strong>Connect an AI</strong> (optional, off by default): Claude Desktop, Claude Code, Codex or any MCP client can search your meetings, read transcripts and manage your to-dos. You choose what it sees; see <a href="#connect-an-ai-assistant">Connect an AI assistant</a>.</li>
+            <li><strong>MCP</strong> (the tab to connect an AI; optional, off by default): Claude Desktop, Claude Code, Codex or any MCP client can search your meetings, read transcripts and manage your to-dos. You choose what it sees; see <a href="#connect-an-ai-assistant">Connect an AI assistant</a>.</li>
             <li><strong>Connected tools</strong> (optional): Jira / Confluence (Atlassian), GitHub, GitLab and Azure DevOps through their official MCP servers, with a browser sign-in — no tokens to copy.</li>
             <li><strong>Who was in the call</strong> (optional): sign in with Google once and each recording gets the title of its Calendar event and the names of the people invited and, for Google Meet calls, of those who actually joined — without any bot in the meeting. Names can also be added by hand.</li>
             <li><strong>Speakers named automatically</strong> (macOS, optional): while recording, the app reads the open Google Meet tab in Chrome, Edge, Brave or Safari (Arc: experimental) — the participant list and, when Meet's captions (CC) are on, who is talking — and puts the right name on “Speaker 1”, “Speaker 2”, … No extension, no bot, no Google sign-in; it needs a one-time browser setting (see <a href="#first-start">First start</a>).</li>
             <li><strong>Your choice of AI</strong>: <strong>Google Gemini</strong> with a free API key (the app picks the model for you and switches automatically when one hits its daily limit), your <strong>ChatGPT Plus/Pro plan</strong> (sign in, no API key), OpenAI, Anthropic or OpenRouter.</li>
+            <li><strong>Setup mission</strong>: Home lists what is still missing (microphone, call audio, speech model, Meet names) with a <strong>Fix</strong> button and a step-by-step guide; each step turns green by itself once it works.</li>
+            <li><strong>Updates itself</strong>: when a new version is out, the app offers <strong>Update and restart</strong>; your meetings, settings and macOS permissions stay.</li>
             <li>English and Italian interface; transcription in 12 languages.</li>
           </ul>
         </section>
@@ -223,7 +227,7 @@ cd src-tauri &amp;&amp; cargo test --lib</code></pre>
             <li>Reading the Google Meet tab (macOS) happens on your computer and only while recording: the app reads participant names and <em>who</em> was talking <em>when</em>; caption text is never read or stored, and nothing is sent anywhere. With <strong>Recognize voices</strong> on, a voice named this way is saved as a voice print so later meetings recognize the person; voices can be deleted any time in Settings.</li>
             <li>The browser setting <strong>Allow JavaScript from Apple Events</strong> lets every app you allow under <em>Privacy &amp; Security → Automation</em> run scripts in your browser tabs, not just Appunto. Allow only apps you trust, and turn the setting off again if you stop using the feature.</li>
             <li>API keys and sign-in tokens are stored on your computer in <code>secrets.json</code> inside the app data folder, readable only by your user account. They are not encrypted, so anyone (or any program) running as your user can read them.</li>
-            <li><strong>Connect an AI</strong> is off until you turn it on. Appunto opens no network port for it: the assistant on your computer starts Appunto and reads through it. Whatever the assistant reads leaves your computer and goes to that assistant's provider (Anthropic, OpenAI, …), so share only what you are comfortable with. Voice prints and audio are never shared.</li>
+            <li><strong>MCP</strong> is off until you turn it on. Appunto opens no network port for it: the assistant on your computer starts Appunto and reads through it. Whatever the assistant reads leaves your computer and goes to that assistant's provider (Anthropic, OpenAI, …), so share only what you are comfortable with. Voice prints and audio are never shared.</li>
             <li>Recording other people may require their consent where you live — tell participants when you record.</li>
           </ul>
           <p><strong>Gemini free tier:</strong> Google may use free-tier prompts and responses to improve its products. For confidential meetings, enable billing on your key or pick another provider.</p>
@@ -238,9 +242,9 @@ cd src-tauri &amp;&amp; cargo test --lib</code></pre>
         <section class="card" id="first-start">
           <h2>First start</h2>
           <ul>
-            <li>The app downloads its speech model once (about 574 MB). Keep it open until the progress bar finishes. The file is checked against a checksum and stays on your computer.</li>
+            <li>The app downloads its speech model once (about 874 MB). Keep it open until the progress bar finishes. The file is checked against a checksum and stays on your computer.</li>
             <li>Questions about your meetings are answered by a model built into the app (“Local (private)”): press <strong>Download</strong> on its card (about 2.7 GB, once) and nothing leaves your computer. Or pick a cloud provider in Settings instead.</li>
-            <li><strong>macOS</strong>: the first recording asks for <strong>Microphone</strong> and <strong>Screen &amp; System Audio Recording</strong> permission. Allow both, then quit and reopen the app.</li>
+            <li><strong>macOS</strong>: the <strong>Setup mission</strong> on Home lists what is still missing. <strong>Allow</strong> shows the macOS prompt for the <strong>Microphone</strong> and <strong>Screen &amp; System Audio Recording</strong>; <strong>Fix</strong> opens a step-by-step guide with a button to the right System Settings page. After Screen &amp; System Audio Recording macOS may ask you to quit and reopen the app. The same list is always in <strong>Settings</strong>.</li>
             <li>
               <strong>macOS, speaker names from Google Meet</strong> (optional):
               <ol>
@@ -248,7 +252,7 @@ cd src-tauri &amp;&amp; cargo test --lib</code></pre>
                 <li>At the first recording with the browser open, macOS asks whether Appunto may control it: click <strong>Allow</strong> (later: <strong>System Settings → Privacy &amp; Security → Automation</strong>).</li>
                 <li>In the Meet call, turn on captions (<strong>CC</strong>) so the voices can be named; the participant list is read without them.</li>
               </ol>
-              The recorder card says which step is missing. The Meet browser extension remains an alternative for the participant list only (any OS with Chrome).
+              In the Setup mission, <strong>Know who is speaking → Fix → Check now</strong> tests your browser right away (macOS asks for the Automation permission then) and tells you which step is missing. The Meet browser extension remains an alternative for the participant list only (any OS with Chrome).
             </li>
             <li><strong>Windows</strong>: nothing to set up. If no microphone is heard, check <strong>Settings → Privacy &amp; security → Microphone</strong> and allow desktop apps.</li>
             <li><strong>Linux</strong>: needs PulseAudio or PipeWire, which most desktops already have.</li>
@@ -258,16 +262,16 @@ cd src-tauri &amp;&amp; cargo test --lib</code></pre>
         <section class="card" id="getting-started">
           <h2>Getting started</h2>
           <ol>
-            <li><strong>Settings → Connections</strong>: every service is one card with a <strong>Connect</strong> button that opens a sign-in in your browser; there are no API keys or tokens to find. Under <strong>AI assistant</strong>, choose <strong>Continue with ChatGPT</strong> (ChatGPT Plus/Pro plan) or <strong>Sign in with OpenRouter</strong>; the built-in <strong>Local (private)</strong> model is listed as coming soon. The free choice today is still <strong>Google Gemini</strong>, under <strong>Advanced → Use your own key</strong>: create a free key at <a href="https://aistudio.google.com/apikey">aistudio.google.com/apikey</a> and paste it. The app uses Gemini 3.5 Flash-Lite, then Gemini 3.1 Flash-Lite, then Gemma 4 when a model fails or reaches its free daily limit (about 1,000 questions a day before Gemma). OpenAI and Anthropic also take a key there. A Claude subscription cannot be used: Anthropic only allows API keys in third-party apps.</li>
-            <li><strong>Settings → Transcription</strong>: choose the language spoken in your meetings.</li>
+            <li><strong>Settings → Connections</strong>: every service is one card with a <strong>Connect</strong> button that opens a sign-in in your browser; there are no API keys or tokens to find. Under <strong>AI assistant</strong>, choose <strong>Continue with ChatGPT</strong> (ChatGPT Plus/Pro plan) or <strong>Sign in with OpenRouter</strong>, or the built-in <strong>Local (private)</strong> model (free, nothing leaves your computer: download it once). Another free choice is <strong>Google Gemini</strong>, under <strong>Advanced → Use your own key</strong>: create a free key at <a href="https://aistudio.google.com/apikey">aistudio.google.com/apikey</a> and paste it. The app uses Gemini 3.5 Flash-Lite, then Gemini 3.1 Flash-Lite, then Gemma 4 when a model fails or reaches its free daily limit (about 1,000 questions a day before Gemma). OpenAI and Anthropic also take a key there. A Claude subscription cannot be used: Anthropic only allows API keys in third-party apps.</li>
+            <li><strong>Settings → Language</strong>: choose the app's language and the language spoken in your meetings.</li>
             <li>Optional — <strong>Settings → Connections → Your tools</strong>: connect Jira, GitHub, GitLab or Azure DevOps with the same browser sign-in.</li>
-            <li>Press the record button when a meeting starts and stop it at the end. Notes appear on the timeline; ask questions in <em>Ask about your meetings</em>.</li>
+            <li>Press the record button when a meeting starts and stop it at the end. Notes appear on the meeting, under <strong>Meetings</strong>; ask questions in <em>Ask about your meetings</em>.</li>
           </ol>
         </section>
 
         <section class="card" id="connect-an-ai-assistant">
           <h2>Connect an AI assistant</h2>
-          <p>Appunto can act as a local <a href="https://modelcontextprotocol.io">MCP</a> server, so an AI assistant can use your meetings and to-dos. Open <strong>Connect an AI</strong> in the sidebar and switch the server on, then:</p>
+          <p>Appunto can act as a local <a href="https://modelcontextprotocol.io">MCP</a> server, so an AI assistant can use your meetings and to-dos. Open <strong>MCP</strong> in the sidebar and switch the server on, then:</p>
           <ul>
             <li><strong>Claude Desktop</strong>: press <strong>Connect</strong> and restart Claude Desktop. Appunto adds itself to <code>claude_desktop_config.json</code> and keeps a backup of the previous file.</li>
             <li><strong>Claude Code</strong>: copy the command shown on the page and run it in a terminal. It looks like <code>claude mcp add --transport stdio --scope user appunto -- /path/to/Appunto --mcp</code>.</li>
